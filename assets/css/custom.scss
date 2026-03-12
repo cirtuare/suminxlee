@@ -1,0 +1,151 @@
+---
+---
+
+/* =============================================================================
+   Custom styles for Sumin Lee's portfolio
+   Hover badge + style consistency (seooyxx.com feel)
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   TASK 2: Circular hover badge
+   --------------------------------------------------------------------------- */
+
+.list-item-hover-badge {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%) scale(0.8);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--global-theme-color);
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Publication rows */
+.publications ol.bibliography li {
+  position: relative;
+  overflow: visible;
+}
+
+.publications ol.bibliography li:hover .list-item-hover-badge {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* Project cards */
+.projects .card.hoverable {
+  position: relative;
+  overflow: visible;
+}
+
+.projects .card.hoverable:hover .list-item-hover-badge {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* ---------------------------------------------------------------------------
+   TASK 5: Publication / research row hover accent (seooyxx.com feel)
+   --------------------------------------------------------------------------- */
+
+.publications ol.bibliography li {
+  border-left: 3px solid transparent;
+  padding-left: 0.75rem;
+  transition: border-left-color 0.2s ease, background 0.2s ease;
+  border-radius: 0 4px 4px 0;
+}
+
+.publications ol.bibliography li:hover {
+  border-left-color: var(--global-theme-color);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+html[data-theme="dark"] .publications ol.bibliography li:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ---------------------------------------------------------------------------
+   TASK 5: Venue / abbr badge as small pill
+   --------------------------------------------------------------------------- */
+
+.publications ol.bibliography li .abbr abbr {
+  background-color: var(--global-theme-color);
+  border-radius: 12px !important;
+  padding: 2px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* ---------------------------------------------------------------------------
+   TASK 5: Section heading hover underline (about page h2)
+   --------------------------------------------------------------------------- */
+
+.about h2,
+.post-content h2,
+.page-content h2 {
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom-color 0.2s ease;
+}
+
+.about h2:hover,
+.post-content h2:hover,
+.page-content h2:hover {
+  border-bottom-color: var(--global-theme-color);
+}
+
+/* ---------------------------------------------------------------------------
+   TASK 5: Project card hover lift + badge
+   --------------------------------------------------------------------------- */
+
+.projects a .card.hoverable {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.projects a:hover .card.hoverable {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------------------------
+   Project card tag chips
+   --------------------------------------------------------------------------- */
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 0.5rem;
+}
+
+.project-tag {
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
+  color: var(--global-text-color-light);
+  border-radius: 12px;
+  padding: 1px 8px;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+/* ---------------------------------------------------------------------------
+   Author self-name emphasis (already italic via bib.liquid <em>,
+   add underline to make it stand out more)
+   --------------------------------------------------------------------------- */
+
+.publications ol.bibliography li .author > em {
+  font-style: normal;
+  font-weight: 600;
+  border-bottom: 1px solid var(--global-theme-color);
+}

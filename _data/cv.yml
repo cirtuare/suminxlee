@@ -139,6 +139,22 @@ cv:
         icon: fa-solid fa-pencil
         keywords: "Figma, Cinema 4D, Adobe Illustrator, Premiere Pro, User Interviews, Affinity Diagramming, User Testing"
 
+    Awards:
+      - name: Excellence Award
+        year: 2025
+        issuer: Seoul National University Social Responsibility Contest
+        summary: "Awarded for the Color 3D project — a 3D tactile color display system for visually impaired users."
+
+      - name: ICAT 2025 Speaker
+        year: 2025
+        issuer: International Conference on Appropriate Technology
+        summary: "Invited speaker presenting the Color 3D tactile color display system."
+
+      - name: Engineering Creative Design Festival Finalist
+        year: 2024
+        issuer: 13th SNU Engineering Creative Design Festival
+        summary: "Finalist for the Flood Alert System for Semi-basement Housing project."
+
     Languages:
       - name: Korean
         summary: "Native speaker"
