@@ -1,189 +1,147 @@
 cv:
-  name: Albert Einstein
-  label: Scientist
-  email: einstein@example.com
-  location: Princeton, NJ
+  name: Sumin Lee
+  label: Undergraduate HCI Researcher & iOS Developer
+  email: cirtuare@snu.ac.kr
+  phone: (+82) 010-4094-9525
+  location: Seoul, Republic of Korea
   image: ""
-  summary: A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time
+  summary: >
+    Senior undergraduate at Seoul National University pursuing a double major in
+    Civil & Environmental Engineering and Information Science and Culture (Intelligent Communications / ECE).
+    Passionate about HCI research and iOS development with a focus on assistive technology and human-centered design.
 
   social_networks:
-    - network: X
-      username: AlbertEinstein
     - network: GitHub
-      username: example
+      username: cirtuare
     - network: LinkedIn
-      username: example
-
-  address:
-    street: 2712 Broadway St
-    city: San Francisco
-    region: California
-    postalCode: CA 94115
-    countryCode: US
+      username: cirtuare
 
   sections:
     Education:
-      - institution: University of Zurich
-        location: Zurich, Switzerland
-        url: https://www.uzh.ch/
-        area: Physics
-        studyType: PhD
-        start_date: 1900
-        end_date: 1905
-        score: ""
-        courses: "Theory of Relativity"
+      - institution: Seoul National University
+        location: Seoul, Republic of Korea
+        url: https://www.snu.ac.kr/
+        area: Civil & Environmental Engineering / Information Science and Culture (ECE)
+        studyType: B.S. (Double Major)
+        start_date: 2023
+        end_date: 2027
         highlights:
-          - Description 1.
-          - Description 2.
-
-      - institution: Eidgenössische Technische Hochschule
-        location: Zurich, Switzerland
-        area: Physics
-        studyType: Federal teaching diploma
-        start_date: 1896
-        end_date: 1900
-        highlights:
-          - Description 1.
-          - Description 2.
+          - "Relevant Coursework: HCI Theory and Practice, Algorithms, Digital Computer Concept and Practice, Data Structures"
 
     Experience:
-      - company: Institute for Advanced Study, Princeton University
-        position: Professor of Theoretical Physics
-        location: Princeton University, NJ
-        start_date: 1933
-        end_date: 1955
-        summary: Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.
+      - company: SNU IMSI LAB
+        position: Undergraduate Researcher
+        location: Seoul National University
+        start_date: 2026-02
+        end_date: present
+        summary: Medical Image AI research.
+
+      - company: Computing Subject Tutor
+        position: Tutor
+        location: Seoul National University
+        start_date: 2026-03
+        end_date: 2026-06
+        summary: Undergraduate tutor for computing coursework (2026 Spring).
+
+      - company: Restaurant Finder App "Acon"
+        position: iOS Lead Developer
+        location: Seoul, Republic of Korea
+        start_date: 2025-01
+        end_date: present
         highlights:
-          - Relativity
-          - Description 2.
+          - Spearheaded iOS development by proposing and architecting the app structure; managed App Store release end-to-end
+          - Implemented memory-optimized custom photo album selection using Apple's Photos framework
+          - Designed extensible LocationManager with CoreLocation and Multicast delegate pattern, integrated with Naver Map API
+          - Implemented Amplitude analytics via a custom AmplitudeManager class for user behavior tracking
 
-      - company: California Institute of Technology
-        position: Visiting Professor
-        location: Pasadena, California, US
-        start_date: 1933
-        end_date: 1933
+      - company: SNU Dining App "Siksha"
+        position: iOS Developer
+        location: Seoul National University
+        start_date: 2024-03
+        end_date: present
         highlights:
-          - Description 1.
-          - Description 2.
+          - Maintained and improved SwiftUI app serving 10,000+ users, refactoring to clean architecture
+          - Proposed and developed KakaoTalk menu sharing feature
 
-      - company: Kaiser Wilhelm Institute for Physics
-        position: Director
-        location: Berlin, Germany
-        start_date: 1917
-        end_date: 1933
+      - company: Date Course Sharing App "Dateroad"
+        position: iOS Developer
+        location: Seoul, Republic of Korea
+        start_date: 2024-07
+        end_date: 2025-03
+        highlights:
+          - Developed complex UI components and engineered reusable custom alert controller
+          - Configured Google AdMob integration and implemented rewarded Google Ads
 
-      - company: Karl-Ferdinand University
-        position: Professor of Theoretical Physics
-        location: Prague, Czechoslovakia
-        start_date: 1911
-        end_date: 1917
+    Projects:
+      - name: Color 3D — 3D Tactile Color Display for Visual Accessibility
+        summary: >
+          Full-stack tactile display system enabling visually impaired users to independently perceive colors through haptic feedback.
+          ICAT 2025 Speaker; Excellence Award at 2025 SNU Social Responsibility Contest.
+        highlights:
+          - iOS app with multimodal interaction via color-height mapping algorithms and voice-guided interfaces
+          - ESP32 firmware for 24-motor control system with Bluetooth communication protocol
+        start_date: 2025-07
+        end_date: 2025-11
 
-      - company: University of Zurich
-        position: Associate Professor of Theoretical Physics
-        location: Zurich, Switzerland
-        start_date: 1909
-        end_date: 1911
+      - name: HCI Research — Daily Rhythm Recovery for Socially Isolated Youth
+        summary: >
+          HCI research project (HCI Theory and Practice course, SNU).
+          Designed AI chatbot service combining daily missions with text/voice interaction.
+        highlights:
+          - Semi-structured user interviews and affinity diagramming
+          - Figma prototype design and comparative user testing
+        start_date: 2025-09
+        end_date: 2025-12
+
+      - name: Flood Alert System for Semi-basement Housing
+        summary: >
+          Novel safety system addressing semi-basement flooding hazards.
+          13th SNU Engineering Creative Design Festival Finalist.
+        highlights:
+          - Three-component solution: water sensors, automatic flood barriers, and emergency evacuation ramps
+          - Designed user scenario demonstration videos and posters
+        start_date: 2024-07
+        end_date: 2024-09
+
+      - name: River Discharge & Water Quality Time-Series Data Analysis
+        summary: >
+          2024 WISET Engineering Research Team G6. Co-authored research at 50th Anniversary Conference of KSCE.
+        highlights:
+          - Python data pipeline processing 10-year multi-resolution time series data across 14 water quality parameters
+          - FFT and power spectrum analysis to identify memory patterns and fractal characteristics
+        start_date: 2024-03
+        end_date: 2024-11
 
     Volunteer:
-      - company: People's Climate March
-        position: Lead Organizer
-        location: Zurich, Switzerland
-        start_date: 2014-04-01
-        end_date: 2015-07-01
-        summary: Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.
+      - company: Wafflestudio (SNU CSE Web/App Development Club)
+        position: Executive Committee, Project Team Leader
+        location: Seoul National University
+        start_date: 2024-08
+        end_date: 2025-08
         highlights:
-          - "Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march."
-          - "Men of the year 2014 by Time magazine"
-
-    Awards:
-      - title: Nobel Prize in Physics
-        authors:
-          - "Royal Swedish Academy of Sciences"
-        date: 1921-11-01
-        awarder: Royal Swedish Academy of Sciences
-        url: https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/
-        summary: The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'
-
-      - title: Max Planck Medal
-        authors:
-          - "German Physical Society"
-        date: 2029
-        awarder: German Physical Society
-        summary: Awarded for outstanding scientific achievement
-
-    Publications:
-      - title: Zur Elektrodynamik bewegter Körper
-        authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-06-30
-        url: https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies
-        summary: It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source.
-
-      - title: Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt
-        authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-03-18
-        url: https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt
-        summary: In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921.
-
-      - title: Die Grundlage der allgemeinen Relativitätstheorie
-        authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1916-03-20
-        url: https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie
-        summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
+          - Led 400+ members in web/app programming development
+          - Organized alum homecoming event bringing together members across 20 years of club history
+          - Primary coordinator for collaboration with SNU Festival Committee
 
     Skills:
-      - name: Physics
-        level: Master
-        icon: fa-solid fa-hashtag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
+      - name: iOS Development
+        level: Advanced
+        icon: fa-brands fa-apple
+        keywords: "Swift, SwiftUI, Xcode, CoreLocation, Photos Framework"
+
+      - name: Programming
+        level: Advanced
+        icon: fa-solid fa-code
+        keywords: "Python, Swift, TypeScript, C++, Java"
+
+      - name: Design & Research
+        level: Advanced
+        icon: fa-solid fa-pencil
+        keywords: "Figma, Cinema 4D, Adobe Illustrator, Premiere Pro, User Interviews, Affinity Diagramming, User Testing"
 
     Languages:
-      - name: German
+      - name: Korean
         summary: "Native speaker"
 
       - name: English
-        summary: "Fluent"
-
-    Interests:
-      - name: Physics
-        icon: fa-solid fa-tag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
-
-    Certificates:
-      - name: Machine Learning
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-location-dot
-
-      - name: Quantum Computing
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-tag
-
-      - name: Quantum Information
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-envelope
-
-    Projects:
-      - name: Quantum Computing
-        summary: Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.
-        highlights:
-          - Quantum Teleportation
-          - Quantum Cryptography
-        start_date: 2018-01-01
-        end_date: 2018-01-01
-
-    References:
-      - name: Professor John Doe
-        icon: fa-solid fa-laptop
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
-
-      - name: Professor Jane Smith
-        icon: fa-solid fa-thumbtack
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
+        summary: "Fluent (iBT TOEFL 109)"
