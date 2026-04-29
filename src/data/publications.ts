@@ -1,0 +1,37 @@
+import type { Publication, PubType } from '../types';
+
+export const PUBS: Publication[] = [
+  {
+    id: 'c2', type: 'Conference', year: '2026',
+    title: '3D Tactile Display for Non-visual Color Perception',
+    authors: 'Sumin Lee*, Yehyeon Park*',
+    venue: 'Proceedings of HCI Korea 2026',
+    note: 'First author · Equal contribution',
+  },
+  {
+    id: 'p2', type: 'Preprint', year: '2025',
+    title: 'NEMESIS: Noise-suppressed Efficient MAE with Enhanced Superpatch Integration Strategy',
+    authors: 'Kyeonghun Kim, Hyeonseok Jung, Youngung Han, Hyunsu Go, Eunseob Choi, Seongbin Park, Junsu Lim, Jiwon Yang, Sumin Lee, Insung Hwang, Ken Ying-Kai Liao, Nam-Joon Kim†',
+    venue: 'Under review',
+    note: 'Co-author',
+  },
+  {
+    id: 'p1', type: 'Preprint', year: '2025',
+    title: 'MATHENA: Mamba-based Architectural Tooth Hierarchical Estimator and Holistic Evaluation Network for Anatomy',
+    authors: 'Kyeonghun Kim, Jaehyung Park, Youngung Han, ..., Sumin Lee, ..., Nam-Joon Kim†',
+    venue: 'Under review',
+    note: 'Co-author',
+  },
+  {
+    id: 'c1', type: 'Conference', year: '2024',
+    title: 'Memory and Spatial Patterns in Long-Term Time Series of River Discharge and Water Quality Parameters Using Fractal Theory',
+    authors: 'Eunpyo Lee, Jungsoo Woo, Sumin Lee, Soyun Ihn, Soohyun Yang†',
+    venue: 'KSCE 2024 Convention',
+    note: 'Co-author',
+  },
+];
+
+export const PUB_TYPE_STYLE: Record<PubType, { text: string }> = {
+  Conference: { text: 'var(--pink)' },
+  Preprint:   { text: 'var(--peach)' },
+};

@@ -1,0 +1,130 @@
+import type { Project, TagName } from '../types';
+
+export const ALL_TAGS: TagName[] = ['hci', 'civil engineering', 'design', 'iOS', 'medical', 'ml'];
+
+export const TAG_COL: Record<TagName, string> = {
+  'hci': '#F0506E',
+  'civil engineering': '#E8604A',
+  'design': '#E84060',
+  'iOS': '#DA3055',
+  'medical': '#D02848',
+  'ml': '#C82040',
+};
+
+export const PROJECTS: Project[] = [
+  {
+    title: 'Color 3D',
+    subtitle: '3D Tactile Color Display for Visual Accessibility',
+    period: 'Jul 2025 – Dec 2025',
+    role: 'Software Developer & Team Lead',
+    venue: 'ICAT 2025 · HCI Korea 2026',
+    tags: ['hci', 'design', 'iOS'],
+    cg: 'cg1',
+    bullets: [
+      'ICAT 2025 Speaker — presented full-stack tactile display system for color perception',
+      'Developed full-stack system enabling visually impaired users to independently perceive colors through haptic feedback',
+      'Implemented iOS app featuring multimodal interaction via color-height mapping algorithms, voice-guided interfaces, and on-device AI descriptions',
+      'Engineered ESP32 firmware for 24-motor control system with Bluetooth communication protocol for real-time tactile rendering',
+    ],
+    body: [
+      { type: 'text', content: 'Color 3D is an assistive technology project that lets visually impaired users independently perceive color through a 3D tactile display. Instead of relying on a sighted helper or a verbal description, the user simply holds their fingertips to a grid of actuators — each one rising or falling to encode the hue of whatever the camera is pointing at.' },
+      { type: 'image', wide: true, caption: 'The assembled hardware prototype: a 24-motor actuator grid controlled by an ESP32, housed in a compact enclosure designed for one-handed use.' },
+      { type: 'heading', content: 'System Architecture' },
+      { type: 'text', content: 'The system has three layers. The iOS app handles the camera feed, runs on-device color analysis, and streams motor commands over Bluetooth Low Energy. The ESP32 firmware receives those commands and drives 24 servo motors in real time, updating at ~30 Hz. A custom color-to-height mapping algorithm converts raw RGB into a spatial relief pattern that is consistent and learnable across sessions.' },
+      { type: 'image-pair', images: [
+        { caption: 'iOS app UI — live camera viewfinder with color region overlay and voice guidance controls.' },
+        { caption: 'ESP32 firmware debug view — motor positions visualized as a 4×6 heatmap during development.' },
+      ]},
+      { type: 'quote', content: '"The hardest part wasn\'t the hardware — it was designing a mapping that a user could learn in under ten minutes."' },
+      { type: 'heading', content: 'Research Contribution' },
+      { type: 'text', content: 'We presented a full paper at HCI Korea 2026, where we reported results from a preliminary user study with five visually impaired participants. After a short training session, participants could identify primary and secondary colors with over 80% accuracy using only tactile feedback. The project was also selected for a talk at ICAT 2025, where we discussed implications for low-cost assistive devices in contexts with limited screen access.' },
+      { type: 'image', caption: 'Poster presented at HCI Korea 2026. The study was the first to directly compare tactile color encoding strategies in a controlled within-subjects design.' },
+    ],
+  },
+  {
+    title: 'MATHENA',
+    subtitle: 'Mamba-based Dental Anatomy Hierarchical Estimator',
+    period: '2025',
+    role: 'Co-author',
+    venue: 'Preprint · Under review',
+    tags: ['medical', 'ml'],
+    cg: 'cg2',
+    bullets: [
+      'Mamba-based deep learning architecture for hierarchical dental anatomy estimation and segmentation',
+      'Holistic evaluation framework covering multi-structure tooth detection and classification',
+      'Part of multi-project dental AI pipeline at IMSI Lab, SNU',
+    ],
+  },
+  {
+    title: 'NEMESIS',
+    subtitle: 'Noise-suppressed Efficient MAE + Enhanced Superpatch Strategy',
+    period: '2025',
+    role: 'Co-author',
+    venue: 'Preprint · Under review',
+    tags: ['medical', 'ml'],
+    cg: 'cg3',
+    bullets: [
+      'Noise-suppressed masked autoencoder with enhanced superpatch integration strategy for medical imaging',
+      'Efficient self-supervised pretraining pipeline applied to dental and radiology datasets',
+      'Ablation studies comparing superpatch integration strategies across multiple imaging domains',
+    ],
+  },
+  {
+    title: 'River Discharge Analysis',
+    subtitle: 'Fractal Analysis of River Discharge & Water Quality',
+    period: 'Mar 2024 – Nov 2024',
+    role: 'WISET Engineering Research Team G6',
+    venue: 'KSCE 2024 Convention',
+    tags: ['civil engineering', 'ml'],
+    cg: 'cg4',
+    bullets: [
+      "Developed Python data pipeline processing 10-year multi-resolution time series across 14 water quality parameters from Korea's major river basins",
+      'Implemented signal processing techniques (FFT, power spectrum analysis) using NumPy and SciPy to identify memory patterns and fractal characteristics',
+      'Created log-log visualizations and spatial correlation analyses across river monitoring stations',
+      'Results presented at KSCE 2024 Convention',
+    ],
+  },
+  {
+    title: 'Acon',
+    subtitle: 'Restaurant Finder iOS App',
+    period: 'Jan 2025 – Oct 2025',
+    role: 'iOS Lead Developer',
+    venue: 'App Store Released',
+    tags: ['iOS', 'design'],
+    cg: 'cg5',
+    bullets: [
+      'Proposed and architected the app structure; managed App Store release end-to-end',
+      'Led coordination across product, design, Android, and backend teams to align priorities and resolve blockers',
+      "Implemented memory-optimized custom photo album selection using Apple's Photos framework",
+      'Designed extensible LocationManager with CoreLocation + Naver Map API, creating a location verification system',
+      'Proposed and implemented Amplitude analytics via custom AmplitudeManager class for user behavior tracking',
+    ],
+  },
+  {
+    title: 'Siksha',
+    subtitle: 'SNU Dining Information App',
+    period: 'Mar 2024 – Present',
+    role: 'iOS Developer',
+    venue: '10,000+ Active Users',
+    tags: ['iOS'],
+    cg: 'cg6',
+    bullets: [
+      'Maintained and improved SwiftUI app serving 10,000+ users, refactoring to clean architecture',
+      'Proposed and developed KakaoTalk menu-sharing feature, renewing KakaoTalk-related libraries and codebase',
+      'Implemented various feature improvements across multiple app sections',
+    ],
+  },
+  {
+    title: 'Dateroad',
+    subtitle: 'Date Course Sharing App',
+    period: 'Jul 2024 – Mar 2025',
+    role: 'iOS Developer',
+    venue: 'App Store Released',
+    tags: ['iOS', 'design'],
+    cg: 'cg7',
+    bullets: [
+      'Developed complex UI components and engineered reusable custom alert controller used across multiple app sections',
+      'Configured Google AdMob integration and implemented rewarded Google Ads',
+    ],
+  },
+];
