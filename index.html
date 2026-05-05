@@ -3,15 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="./img/logo.png" />
-  <link rel="shortcut icon" type="image/png" href="./img/logo.png" />
-  <link rel="apple-touch-icon" href="./img/logo.png" />
+  <link rel="icon" type="image/png" href="/img/logo.png" />
+  <link rel="shortcut icon" type="image/png" href="/img/logo.png" />
+  <link rel="apple-touch-icon" href="/img/logo.png" />
   <title>Sumin Lee</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <script type="module" crossorigin src="./assets/index-CsOLbXko.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Old4t49G.css">
+  <script>
+    // GitHub Pages SPA: restore path from ?p= query param set by 404.html
+    (function() {
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect !== location.href) {
+        history.replaceState(null, null, redirect);
+        return;
+      }
+      var search = location.search;
+      if (search.length > 1) {
+        var params = {};
+        search.slice(1).split('&').forEach(function(p) {
+          var kv = p.split('=');
+          params[kv[0]] = kv.slice(1).join('=');
+        });
+        if (params.p !== undefined) {
+          var path = '/' + params.p;
+          if (params.q) path += '?' + params.q.split('~and~').join('&');
+          history.replaceState(null, null, path);
+        }
+      }
+    })();
+  </script>
+  <script type="module" crossorigin src="/assets/index-BU2xhgE5.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DLu-OEpQ.css">
 </head>
 <body>
   <div id="grain"></div>
