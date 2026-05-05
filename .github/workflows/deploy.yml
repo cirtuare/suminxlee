@@ -12,6 +12,7 @@ on:
       - 'package-lock.json'
       - 'vite.config.ts'
       - 'tsconfig*.json'
+      - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
 permissions:
