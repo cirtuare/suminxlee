@@ -1,6 +1,6 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
+import { Routes, Route, Navigate, useNavigate, useParams } from 'react-router-dom';
 import type { Tab, Project } from './types';
-import { TABS } from './constants';
 import { PROJECTS } from './data/projects';
 import Layout from './components/Layout';
 import About from './components/About';
@@ -12,44 +12,50 @@ function toSlug(title: string) {
   return title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 }
 
-function parseHash(): { tab: Tab; project: Project | null } {
-  const hash = window.location.hash.slice(1);
-  const [tabPart, slug] = hash.split('/');
-  const tab: Tab = (TABS as string[]).includes(tabPart) ? (tabPart as Tab) : 'about';
-  const project = slug ? (PROJECTS.find(p => toSlug(p.title) === slug) ?? null) : null;
-  return { tab, project };
-}
-
-export default function App() {
-  const [{ tab, project }, setNav] = useState(parseHash);
-
-  useEffect(() => {
-    const handler = () => setNav(parseHash());
-    window.addEventListener('popstate', handler);
-    return () => window.removeEventListener('popstate', handler);
-  }, []);
-
-  const setTab = useCallback((t: Tab) => {
-    history.pushState(null, '', `#${t}`);
-    setNav({ tab: t, project: null });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+function ProjectsRoute() {
+  const navigate = useNavigate();
+  const { slug } = useParams<{ slug?: string }>();
+  const selected = slug ? (PROJECTS.find(p => toSlug(p.title) === slug) ?? null) : null;
 
   const openProject = useCallback((p: Project) => {
-    history.pushState(null, '', `#projects/${toSlug(p.title)}`);
-    setNav({ tab: 'projects', project: p });
-  }, []);
+    navigate(`/projects/${toSlug(p.title)}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [navigate]);
 
   const closeProject = useCallback(() => {
-    history.back();
-  }, []);
+    navigate('/projects');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [navigate]);
+
+  return <Projects selected={selected} onOpen={openProject} onClose={closeProject} />;
+}
+
+function TabLayout({ tab }: { tab: Tab }) {
+  const navigate = useNavigate();
+  const setTab = useCallback((t: Tab) => {
+    navigate(`/${t === 'about' ? '' : t}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [navigate]);
 
   return (
     <Layout tab={tab} setTab={setTab}>
       {tab === 'about'        && <About />}
       {tab === 'publications' && <Publications />}
-      {tab === 'projects'     && <Projects selected={project} onOpen={openProject} onClose={closeProject} />}
+      {tab === 'projects'     && <ProjectsRoute />}
       {tab === 'cv'           && <CV />}
     </Layout>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<TabLayout tab="about" />} />
+      <Route path="/publications" element={<TabLayout tab="publications" />} />
+      <Route path="/projects" element={<TabLayout tab="projects" />} />
+      <Route path="/projects/:slug" element={<TabLayout tab="projects" />} />
+      <Route path="/cv" element={<TabLayout tab="cv" />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }
