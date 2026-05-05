@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { useFade } from '../hooks/useFade';
+import { withBase } from '../utils/withBase';
 import Eyebrow from './Eyebrow';
 
 const SECTIONS = [
@@ -132,7 +133,7 @@ const T = {
 function PdfButton() {
   return (
     <a
-      href="/cv/Sumin-Lee-Resume.pdf"
+      href={withBase('/cv/Sumin-Lee-Resume.pdf')}
       target="_blank"
       rel="noopener noreferrer"
       onMouseEnter={e => {

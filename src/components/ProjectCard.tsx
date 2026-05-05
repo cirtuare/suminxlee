@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { Project } from '../types';
 import { TAG_COL } from '../data/projects';
 import { useFade } from '../hooks/useFade';
+import { withBase } from '../utils/withBase';
 
 interface Props {
   project: Project;
@@ -28,7 +29,7 @@ export default function ProjectCard({ project, onOpen }: Props) {
     >
       {project.thumbnail ? (
         <img
-          src={project.thumbnail}
+          src={withBase(project.thumbnail)}
           alt={project.title}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: project.thumbnailPosition ?? 'center', display: 'block' }}
         />

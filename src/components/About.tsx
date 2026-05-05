@@ -1,6 +1,7 @@
 import { MailIcon, GithubIcon, LinkedinIcon } from '../icons';
 import { useIsMobile } from '../hooks/useIsMobile';
 import Eyebrow from './Eyebrow';
+import { withBase } from '../utils/withBase';
 
 const SOCIAL = [
   { Icon: MailIcon,     href: 'mailto:cirtuare@snu.ac.kr',           label: 'cirtuare@snu.ac.kr' },
@@ -46,7 +47,7 @@ export default function About() {
                 width: '62%', maxWidth: 210, aspectRatio: '4/5',
                 WebkitMaskImage: MASK, maskImage: MASK,
               }}>
-                <img src="/img/prof-pic.png" alt="Sumin Lee" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <img src={withBase('/img/prof-pic.png')} alt="Sumin Lee" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
             </div>
 
@@ -77,7 +78,7 @@ export default function About() {
               flexShrink: 0, width: 170, aspectRatio: '4/5',
               WebkitMaskImage: MASK, maskImage: MASK,
             }}>
-              <img src="/img/prof-pic.png" alt="Sumin Lee" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <img src={withBase('/img/prof-pic.png')} alt="Sumin Lee" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>

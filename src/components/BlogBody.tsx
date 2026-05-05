@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { BlogBlock } from '../types';
+import { withBase } from '../utils/withBase';
 
 interface BlogBodyProps {
   blocks?: BlogBlock[];
@@ -36,7 +37,7 @@ function BlogImage({ src, caption, cg }: { src?: string; caption?: string; cg: s
     <figure style={{ margin: 0 }}>
       {src ? (
         <div style={{ borderRadius: '1rem', overflow: 'hidden' }}>
-          <img src={src} alt={caption ?? ''} style={{ width: '100%', height: 'auto', display: 'block' }} />
+          <img src={withBase(src)} alt={caption ?? ''} style={{ width: '100%', height: 'auto', display: 'block' }} />
         </div>
       ) : (
         <div style={{
@@ -84,7 +85,7 @@ function BlogImageRow({ images, mobile }: { images: Array<{ src: string }>; mobi
           background: 'rgba(255,255,255,0.55)',
           border: '1px solid rgba(255,255,255,0.7)',
         }}>
-          <img src={img.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+          <img src={withBase(img.src)} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
         </div>
       ))}
     </div>

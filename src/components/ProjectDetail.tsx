@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import type { Project } from '../types';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { BackIcon } from '../icons';
+import { withBase } from '../utils/withBase';
 import Eyebrow from './Eyebrow';
 import BlogBody from './BlogBody';
 
@@ -20,7 +21,7 @@ export default function ProjectDetail({ project, onBack }: Props) {
       <div style={{ position: 'relative', height: mobile ? '42vh' : '52vh', minHeight: 240, overflow: 'hidden' }}>
         {project.thumbnail ? (
           <img
-            src={project.thumbnail}
+            src={withBase(project.thumbnail)}
             alt={project.title}
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />

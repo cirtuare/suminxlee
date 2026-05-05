@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { Tab } from '../types';
 import { TABS } from '../constants';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { withBase } from '../utils/withBase';
 import Eyebrow from './Eyebrow';
 
 interface Props {
@@ -33,7 +34,7 @@ export default function Layout({ tab, setTab, children }: Props) {
           background: 'none', border: 'none', cursor: 'pointer',
           padding: 0, flexShrink: 0, display: 'flex', alignItems: 'center',
         }}>
-          <img src="/img/logo.png" alt="Sumin Lee" style={{ height: 32, width: 'auto', display: 'block', marginTop: 3 }} />
+          <img src={withBase('/img/logo.png')} alt="Sumin Lee" style={{ height: 32, width: 'auto', display: 'block', marginTop: 3 }} />
         </button>
         <nav className="nav-tabs" style={{ marginLeft: 'auto' }}>
           {TABS.map(t => (
