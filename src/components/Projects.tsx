@@ -4,9 +4,14 @@ import { PROJECTS, ALL_TAGS } from '../data/projects';
 import ProjectCard from './ProjectCard';
 import ProjectDetail from './ProjectDetail';
 
-export default function Projects() {
+interface Props {
+  selected: Project | null;
+  onOpen: (p: Project) => void;
+  onClose: () => void;
+}
+
+export default function Projects({ selected, onOpen, onClose }: Props) {
   const [activeTags, setActiveTags] = useState<Set<TagName>>(new Set());
-  const [selected, setSelected] = useState<Project | null>(null);
 
   const toggleTag = useCallback((t: TagName) => {
     setActiveTags(prev => {
@@ -30,7 +35,7 @@ export default function Projects() {
     });
   }, [activeTags]);
 
-  if (selected) return <ProjectDetail project={selected} onBack={() => setSelected(null)} />;
+  if (selected) return <ProjectDetail project={selected} onBack={onClose} />;
 
   return (
     <div className="page-enter page-pad" style={{ maxWidth: 1400, margin: '0 auto' }}>
@@ -44,7 +49,7 @@ export default function Projects() {
         </div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(270px, 100%), 1fr))', gap: '1.1rem' }}>
-        {filtered.map(p => <ProjectCard key={p.title} project={p} onOpen={setSelected} />)}
+        {filtered.map(p => <ProjectCard key={p.title} project={p} onOpen={onOpen} />)}
       </div>
     </div>
   );
