@@ -1,0 +1,11 @@
+서울대 모든 동아리 - 올클
+https://github.com/wafflestudio/allclear-app
+https://apps.apple.com/kr/app/%EC%84%9C%EC%9A%B8%EB%8C%80-%EB%AA%A8%EB%93%A0-%EB%8F%99%EC%95%84%EB%A6%AC-%EC%98%AC%ED%81%B4/id6461214029
+
+* 서울대학교 동아리 어플 ‘올클’
+* 활동 내역
+    * 기존 운영사에서 ‘와플스튜디오’로의 인프라 이전 작업 참여
+Migrated iOS app to a new Apple Developer account, resolving code signing and deployment issues
+ Led Admin Feature TF, defining requirements and driving decisions between design and backend teams
+
+* IS in design renewal process - img caption으로 넣기

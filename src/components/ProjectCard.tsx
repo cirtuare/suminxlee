@@ -26,13 +26,21 @@ export default function ProjectCard({ project, onOpen }: Props) {
         boxShadow: hov ? '0 8px 32px rgba(40,8,14,0.14)' : '0 2px 12px rgba(40,8,14,0.07)',
       }}
     >
-      <div className={project.cg} style={{ position: 'absolute', inset: 0 }} />
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '52%', background: 'linear-gradient(to bottom, transparent 0%, rgba(243,237,238,0.96) 72%, rgba(243,237,238,1) 100%)' }} />
+      {project.thumbnail ? (
+        <img
+          src={project.thumbnail}
+          alt={project.title}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: project.thumbnailPosition ?? 'center', display: 'block' }}
+        />
+      ) : (
+        <div className={project.cg} style={{ position: 'absolute', inset: 0 }} />
+      )}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '70%', background: 'linear-gradient(to bottom, transparent 0%, rgba(243,237,238,0.88) 48%, rgba(243,237,238,0.98) 70%, rgba(243,237,238,1) 100%)' }} />
 
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.1rem 1.2rem' }}>
         <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', marginBottom: '0.55rem' }}>
           {project.tags.map(t => (
-            <div key={t} style={{ fontFamily: 'var(--font)', fontWeight: 600, fontSize: '0.49rem', letterSpacing: '0.12em', textTransform: 'uppercase', padding: '0.16rem 0.45rem', borderRadius: '9999px', background: `${TAG_COL[t]}18`, border: `1px solid ${TAG_COL[t]}38`, color: TAG_COL[t] }}>{t}</div>
+            <div key={t} style={{ fontFamily: 'var(--font)', fontWeight: 500, fontSize: '0.49rem', letterSpacing: '0.1em', padding: '0.16rem 0.45rem', borderRadius: '9999px', background: `${TAG_COL['iOS']}18`, border: `0.5px solid ${TAG_COL['iOS']}33`, color: TAG_COL['iOS'] }}>{t}</div>
           ))}
         </div>
         <h3 style={{ fontFamily: 'var(--font)', fontWeight: 800, fontSize: 'clamp(1rem,1.55vw,1.25rem)', lineHeight: 1.05, letterSpacing: '-0.02em', color: 'var(--text)', marginBottom: '0.2rem' }}>{project.title}</h3>

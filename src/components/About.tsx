@@ -9,86 +9,111 @@ const SOCIAL = [
 ];
 
 const NEWS = [
-  { date: 'Apr 2026', text: 'Opened my personal website!' },
+  { date: 'May 2026', text: 'Opened my personal website!' },
   { date: 'Feb 2026', text: 'Joined the SNU IMSI Lab, advised by Prof. Nam-joon Kim.' },
   { date: 'Jan 2026', text: 'Presented a poster at HCI Korea 2026.' },
 ];
 
-function PhotoPlaceholder({ width, height }: { width: number; height: number }) {
-  return (
-    <div style={{
-      width, height, flexShrink: 0,
-      borderRadius: '0.9rem', position: 'relative', overflow: 'hidden',
-      background: 'rgba(255,255,255,0.35)', border: '1px solid rgba(255,255,255,0.7)',
-    }}>
-      <div className="cg1" style={{ position: 'absolute', inset: 0, opacity: 0.18 }} />
-      <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(240,80,110,0.35)" strokeWidth="1.2"><circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" /></svg>
-        <Eyebrow style={{ color: 'rgba(240,80,110,0.35)', fontSize: '0.44rem' }}>Photo</Eyebrow>
-      </div>
-    </div>
-  );
-}
+const MASK = 'radial-gradient(ellipse 95% 95% at 50% 42%, black 72%, transparent 100%)';
 
 export default function About() {
   const mobile = useIsMobile();
   const px = mobile ? '1.25rem' : '2.5rem';
 
   return (
-    // Full-viewport wrapper — gradient lives here so it spans the whole page width
-    <div className="page-enter" style={{
-      position: 'relative',
-      height: mobile ? 'auto' : 'calc(100vh - 54px - 44px)',
-      overflow: mobile ? 'visible' : 'hidden',
-    }}>
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        background: `
-          radial-gradient(ellipse 55% 60% at 5% 90%, rgba(240,80,110,0.10) 0%, transparent 60%),
-          radial-gradient(ellipse 50% 50% at 95% 10%, rgba(240,112,72,0.08) 0%, transparent 55%),
-          radial-gradient(ellipse 40% 40% at 50% 50%, rgba(251,188,181,0.05) 0%, transparent 70%)
-        `,
-      }} />
+    <div className="page-enter" style={{ position: 'relative' }}>
 
-      {/* Content constrained to readable width */}
       <div style={{
-        position: 'relative', zIndex: 5,
-        height: mobile ? 'auto' : '100%',
-        display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-        padding: mobile ? `2rem ${px} 3rem` : `2.8rem ${px}`,
-        maxWidth: 1100, width: '100%', margin: '0 auto',
-        gap: mobile ? '1.75rem' : '0',
+        position: 'relative', zIndex: 1,
+        maxWidth: 1100, margin: '0 auto',
+        padding: mobile ? `2.5rem 1.5rem 3.5rem` : `3rem 2.5rem 4rem`,
+        display: 'flex', flexDirection: 'column', gap: '2.5rem',
       }}>
 
-        {/* Name + photo — tightly grouped, photo bottom-aligned to name */}
-        <div style={{ display: 'flex', alignItems: 'flex-end', gap: '1.25rem' }}>
-          <h1 style={{
-            fontFamily: 'var(--font)', fontWeight: 700,
-            fontSize: mobile ? 'clamp(2.6rem,12vw,3.5rem)' : 'clamp(2.8rem,5vw,4.5rem)',
-            lineHeight: 0.92, color: 'var(--text)', letterSpacing: '-0.03em',
-          }}>
-            Sumin<br />Lee
-          </h1>
-          <PhotoPlaceholder width={mobile ? 62 : 112} height={mobile ? 76 : 138} />
-        </div>
+        {mobile ? (
+          /* ── Mobile: Name → Photo (centered) → Bio ── */
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+            <h1 style={{
+              fontFamily: 'var(--font)', fontWeight: 700,
+              fontSize: 'clamp(2.4rem,10vw,3rem)',
+              lineHeight: 1, color: 'rgba(40,8,14,0.72)', letterSpacing: '-0.04em', margin: 0,
+            }}>
+              Sumin Lee
+            </h1>
 
-        {/* Bio */}
-        <div style={{ maxWidth: 680, display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
-          <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: mobile ? '0.8rem' : '0.82rem', color: 'var(--muted)', lineHeight: 1.85 }}>
-            I am an undergraduate student in Civil, Urban & Environmental Engineering and Information Science & Culture at{' '}
-            <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
-            {' '}I am drawn to spaces where technology meaningfully improves everyday life — not just in high-impact breakthroughs, but in the incremental ways that quietly shape how people live.
-          </p>
-          <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: mobile ? '0.8rem' : '0.82rem', color: 'var(--muted)', lineHeight: 1.85 }}>
-            My research interests lie in{' '}
-            <span style={{ fontWeight: 600, color: 'var(--text)' }}>Human-AI Interaction</span>
-            , with a growing curiosity toward multimodal interaction — how vision, language, and touch can be integrated to create AI systems that are more attuned to human context. I am currently working at the IMSI Lab on Medical AI research, building a stronger technical foundation in AI as I work toward becoming an HAI researcher.
-          </p>
-        </div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div style={{
+                width: '62%', maxWidth: 210, aspectRatio: '4/5',
+                WebkitMaskImage: MASK, maskImage: MASK,
+              }}>
+                <img src="/img/prof-pic.png" alt="Sumin Lee" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              </div>
+            </div>
 
-        {/* News */}
-        <div style={{ maxWidth: 680 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.8rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
+                I am an undergraduate student in Civil, Urban & Environmental Engineering and Information Science & Culture at{' '}
+                <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
+                {' '}I am drawn to spaces where technology meaningfully improves everyday life — not just in high-impact breakthroughs, but in the incremental ways that quietly shape how people live. On the side, I have worked as an iOS developer, with 4 released products reaching 10,000+ users.
+              </p>
+              <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
+                My research interests lie in{' '}
+                <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-AI interaction</span>
+                , with a growing curiosity toward how humans and AI collaborate — how multimodal engagement with AI shapes not only the outcomes of that collaboration but also people's understanding and wellbeing. At the core is an interest in how AI can improve quality of life, not only in high-impact applications but in the incremental ways that shape everyday experience.
+              </p>
+              <div style={{ display: 'flex', gap: '0.45rem', paddingTop: '0.25rem' }}>
+                {SOCIAL.map(({ Icon, href, label }) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="soc-btn" title={label}>
+                    <Icon s={16} />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* ── Desktop: Photo left | Name + Bio right ── */
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '2.5rem', alignItems: 'flex-start' }}>
+            <div style={{
+              flexShrink: 0, width: 170, aspectRatio: '4/5',
+              WebkitMaskImage: MASK, maskImage: MASK,
+            }}>
+              <img src="/img/prof-pic.png" alt="Sumin Lee" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <h1 style={{
+                fontFamily: 'var(--font)', fontWeight: 600,
+                fontSize: 'clamp(2.5rem,4vw,3.5rem)',
+                lineHeight: 1, color: 'rgba(40,8,14,0.72)', letterSpacing: '-0.04em', margin: 0,
+              }}>
+                Sumin Lee
+              </h1>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.88rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
+                  I am an undergraduate student in Civil, Urban & Environmental Engineering and Information Science & Culture at{' '}
+                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
+                  {' '}I am drawn to spaces where technology meaningfully improves everyday life — not just in high-impact breakthroughs, but in the incremental ways that quietly shape how people live. On the side, I have worked as an iOS developer, with 4 released products reaching 10,000+ users.
+                </p>
+                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.88rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
+                  My research interests lie in{' '}
+                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-AI interaction</span>
+                  , with a growing curiosity toward how humans and AI collaborate — how multimodal engagement with AI shapes not only the outcomes of that collaboration but also people's understanding and wellbeing. At the core is an interest in how AI can improve quality of life, not only in high-impact applications but in the incremental ways that shape everyday experience.
+                </p>
+                <div style={{ display: 'flex', gap: '0.45rem', paddingTop: '0.1rem' }}>
+                  {SOCIAL.map(({ Icon, href, label }) => (
+                    <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="soc-btn" title={label}>
+                      <Icon s={17} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── News ── */}
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
             <Eyebrow style={{ letterSpacing: '0.2em' }}>News</Eyebrow>
             <div style={{ flex: 1, height: 1, background: 'rgba(40,8,14,0.08)' }} />
           </div>
@@ -96,7 +121,7 @@ export default function About() {
             {NEWS.map(({ date, text }, i) => (
               <div key={date} style={{
                 display: 'flex', gap: '1rem', alignItems: 'baseline',
-                padding: '0.52rem 0',
+                padding: '0.5rem 0',
                 borderBottom: i < NEWS.length - 1 ? '1px solid rgba(40,8,14,0.06)' : 'none',
               }}>
                 <span style={{ fontFamily: 'var(--font)', fontWeight: 700, fontSize: '0.6rem', color: 'var(--pink)', whiteSpace: 'nowrap', letterSpacing: '0.04em', minWidth: 54 }}>{date}</span>
@@ -106,14 +131,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Social */}
-        <div style={{ display: 'flex', gap: '0.45rem', flexWrap: 'wrap' }}>
-          {SOCIAL.map(({ Icon, href, label }) => (
-            <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="soc-btn" title={label}>
-              <Icon s={17} />
-            </a>
-          ))}
-        </div>
       </div>
     </div>
   );

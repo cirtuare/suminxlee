@@ -58,6 +58,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); font
 @keyframes gm5 { 0%, 100% { background-position: 100% 50% } 50% { background-position: 0% 50% } }
 @keyframes gm6 { 0%, 100% { background-position: 0% 100% } 50% { background-position: 100% 0% } }
 @keyframes gm7 { 0%, 100% { background-position: 50% 100% } 50% { background-position: 50% 0% } }
+@keyframes gm8 { 0%, 100% { background-position: 0% 50% } 50% { background-position: 100% 50% } }
 
 .cg1 { background: linear-gradient(135deg, #FFE7E5, #FFAEA5, #F0506E, #FBBCB5, #FF879A); background-size: 400% 400%; animation: gm1 10s ease infinite; }
 .cg2 { background: linear-gradient(220deg, #F0506E, #FFAEA5, #FFE7E5, #FBBCB5, #C83858); background-size: 400% 400%; animation: gm2 13s ease infinite; }
@@ -66,6 +67,9 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); font
 .cg5 { background: linear-gradient(80deg, #FBBCB5, #F0506E, #FFE7E5, #FFAEA5, #C83858); background-size: 400% 400%; animation: gm5 14s ease infinite; }
 .cg6 { background: linear-gradient(300deg, #FFAEA5, #FBBCB5, #C83858, #FFE7E5, #F0506E); background-size: 400% 400%; animation: gm6 9s ease infinite; }
 .cg7 { background: linear-gradient(160deg, #FF879A, #C83858, #FFE7E5, #F0506E, #FBBCB5); background-size: 400% 400%; animation: gm7 12s ease infinite; }
+.cg8 { background: linear-gradient(110deg, #FFE7E5, #FF879A, #C83858, #FFAEA5, #F0506E); background-size: 400% 400%; animation: gm8 15s ease infinite; }
+@keyframes gm9 { 0%, 100% { background-position: 100% 0% } 50% { background-position: 0% 100% } }
+.cg9 { background: linear-gradient(250deg, #FFAEA5, #FFE7E5, #F0506E, #C83858, #FF879A); background-size: 400% 400%; animation: gm9 11s ease infinite; }
 
 .page-enter { animation: pgIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
 @keyframes pgIn { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }
@@ -77,6 +81,11 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); font
 
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
+
+.img-row { scrollbar-width: thin; scrollbar-color: rgba(240,80,110,0.2) transparent; }
+.img-row::-webkit-scrollbar { height: 2px; }
+.img-row::-webkit-scrollbar-track { background: transparent; margin: 0 2rem; }
+.img-row::-webkit-scrollbar-thumb { background: rgba(240,80,110,0.22); border-radius: 1px; }
 ::-webkit-scrollbar-thumb { background: rgba(240, 80, 110, 0.22); border-radius: 2px; }
 
 canvas { display: block; }
