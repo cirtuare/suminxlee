@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'AllClear',
     subtitle: 'SNU Club Discovery App',
-    period: '2024 – Present',
+    period: 'Sep 2025 – Present',
     role: 'Mobile Developer (React Native)',
     venue: 'App Store Released',
     tags: ['Dev'],
@@ -153,10 +153,10 @@ export const PROJECTS: Project[] = [
       { type: 'heading', content: 'Results' },
       { type: 'text', content: 'MATHENA achieves 93.78% mAP₅₀ on tooth detection, 90.11% Dice for caries segmentation, 88.35% for anomaly detection, and 72.40% accuracy for dental developmental staging — consistently outperforming prior single-task baselines across all four targets.' },
       { type: 'role', bullets: [
+        'Co-author.',
         { text: 'Led dataset curation for the PARTHENON benchmark.', sub: [
           'Analyzed ten dental datasets with differing annotation formats, label taxonomies, and metadata',
           'Designed a unified schema and performed the full merge',
-          'Assigned data splits across four downstream DL tasks based on annotation type and quality',
           'Produced segmentation mask visualizations and verified labeling quality in-meeting',
         ]},
         'Wrote the Dataset section (§2) of the paper.',
@@ -256,12 +256,12 @@ export const PROJECTS: Project[] = [
         { src: '/projects/Acon/img/3.png' },
         { src: '/projects/Acon/img/4.png' },
       ]},
-      { type: 'text', content: 'Acon is a location-based restaurant discovery map that removes the search bar. Instead of querying by keyword or browsing ranked lists, users navigate their surroundings on a spatial map and encounter restaurants through proximity. The app was developed through two phases: an intensive app-jam with a team of 14, followed by a year-long post-release iteration cycle with a team of 7.' },
+      { type: 'text', content: 'Acon is a location-based restaurant discovery map that removes the search bar. Instead of querying by keyword or browsing ranked lists, users navigate their surroundings on a spatial map and encounter restaurants through proximity. The app was developed through two phases: an intensive hackathon with a team of 14, followed by a year-long post-release iteration cycle with a team of 7.' },
       { type: 'heading', content: 'A Closer Look' },
       { type: 'subheading', content: 'Memory-Optimized Custom Photo Album' },
-      { type: 'text', content: 'The design spec required a custom photo album sheet built on Apple\'s Photos framework. During QA, rapid scrolling through large photo libraries caused memory to spike enough to terminate the app. The fix involved NSCache-based image caching to eliminate repeated allocation, 50-item paginated loading, low-resolution thumbnail requests with on-demand full-resolution fetch, immediate cancellation of off-screen load requests, and fully asynchronous loading on a background thread. Memory usage dropped by over 90%.' },
+      { type: 'text', content: 'The design spec required a custom photo album sheet built on Apple\'s Photos framework, but rapid scrolling through large photo libraries caused memory to spike enough to terminate the app. The fix involved NSCache-based image caching to eliminate repeated allocation, 50-item paginated loading, low-resolution thumbnail requests with on-demand full-resolution fetch, immediate cancellation of off-screen load requests, and fully asynchronous loading on a background thread. Memory usage dropped by over 90%.' },
       { type: 'subheading', content: 'Glassmorphism System and Button Components' },
-      { type: 'text', content: 'Acon\'s visual language is built on glassmorphism — blur, translucent borders, and layered backgrounds — but the style was copy-pasted per screen. A refactor introduced GlassmorphismType (encapsulating blur, border, and background configuration) and GlassmorphismView (unifying rendering). On top of this, ACButton was built as a generic component driven by an ACButtonType protocol, with GlassButtonState managing active/inactive transitions internally. New button variants now require only a type declaration.' },
+      { type: 'text', content: 'Acon\'s visual language is built on glassmorphism (*it was released before iOS 26) — blur, translucent borders, and layered backgrounds — but the style was copy-pasted per screen. A refactor introduced GlassmorphismType (encapsulating blur, border, and background configuration) and GlassmorphismView (unifying rendering). On top of this, ACButton was built as a generic component driven by an ACButtonType protocol, with GlassButtonState managing active/inactive transitions internally. New button variants now require only a type declaration.' },
       { type: 'role', bullets: [
         'iOS lead developer — proposed and designed the app architecture from scratch.',
         'Led cross-functional coordination across PM, design, Android, and backend; managed the end-to-end App Store release.',
@@ -338,9 +338,8 @@ export const PROJECTS: Project[] = [
       { type: 'heading', content: 'Key Findings' },
       { type: 'text', content: 'Rainfall has near-zero memory across all basins — consistent with its role as a stochastic input unfiltered by the watershed. Discharge exhibits white-to-pink noise memory, and 82% of sub-basins show a memory increase from rainfall to discharge, confirming that watershed filtering amplifies persistence. Water quality parameters show longer memory than discharge in most cases, with memory structure varying by parameter type and basin. Discharge memory follows fractal scaling with H-S stream order — higher-order rivers integrate more upstream area and show stronger autocorrelation — while water quality memory trends are parameter-specific and do not follow a consistent spatial pattern across basins.' },
       { type: 'role', bullets: [
+        'Co-author.',
         'Built the Python analysis pipeline end-to-end — data ingestion and harmonization across 14 water quality parameters and hundreds of monitoring stations, FFT-based power spectrum estimation, power law fitting, and log-log visualization.',
-        'Produced spatial correlation maps across all five river basins classified by Horton-Strahler stream order.',
-        'Presented findings at the KSCE 2024 Convention.',
       ]},
     ],
   },
