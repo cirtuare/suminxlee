@@ -165,6 +165,39 @@ export const PROJECTS: Project[] = [
   },
 
   {
+    title: 'MyRhythm',
+    subtitle: 'Emotional-Support AI Companion for Socially Withdrawn Youth',
+    period: 'Sep 2025 – Dec 2025',
+    role: 'Idea Proposer · Co-Author',
+    venue: 'SNU HCI Theory & Practice — Team Project',
+    tags: ['HCI'],
+    cg: 'cg1',
+    thumbnail: '/projects/MyRhythm/thumbnail.png',
+    links: [
+      { label: 'Paper', href: '/projects/MyRhythm/paper.pdf' },
+      { label: 'Poster', href: '/projects/MyRhythm/poster.pdf' },
+    ],
+    bullets: [],
+    body: [
+      { type: 'image', src: '/projects/MyRhythm/thumbnail.png' },
+      { type: 'text', content: 'In Korea, socially withdrawn youth (은둔·고립 청년, hikikomori) are a rapidly growing population — estimated at 2.4% of those aged 19–34 in 2022, up sharply from prior years. Existing public support is overwhelmingly face-to-face (counseling, group activities, self-help meetups), which is precisely the modality these youth find hardest to access. MyRhythm reframes the problem: rather than another mission-management chatbot, it is a non-face-to-face intervention designed around emotional support as the foundation, with behavioral activation built on top.' },
+      { type: 'heading', content: 'Formative Research' },
+      { type: 'text', content: 'We conducted semi-structured in-depth interviews with five formerly withdrawn youth (ages 30–39, withdrawal periods ranging from 2 to 7+ years), recruited through dedicated support organizations. Transcripts were analyzed via affinity diagramming, surfacing three structural barriers: (1) absence of emotional support during early/middle withdrawal stages, (2) one-size-fits-all programs misaligned with individual pace and condition, and (3) diffuse fear of social re-entry that compounds setbacks.' },
+      { type: 'heading', content: 'Design Principles' },
+      { type: 'text', content: 'Three principles were derived from the interview synthesis: (1) a support structure providing emotional stability as the foundation for any behavioral change; (2) personalized programs that respect the user\'s pace and situational context; (3) staged behavioral support that begins from small everyday recovery actions rather than ambitious goals.' },
+      { type: 'heading', content: 'Prototype' },
+      { type: 'text', content: 'The MyRhythm prototype is a mobile app centered on 리듬이 (Rideumi) — a bee-shaped emotional-support persona that acts as a single trusted companion across the service. Onboarding has two stages: a withdrawal-tendency questionnaire that calibrates mission difficulty to the individual, and a digital persona-pairing step that generates a Rideumi character matched to the user\'s temperament. Daily missions arrive via push notification at user-chosen times, ranging from light activations (e.g., open the window for 30 minutes) to weekly heavier ones (e.g., walk outside the home), with the user retaining full control to accept, defer, or substitute. Communication with Rideumi happens through chat and an opt-in voice call channel — control over modality is deliberately given to the user, since unwanted calls can themselves become a barrier. Mission completion feeds character leveling, mileage redeemable for real-world rewards, and a weekly report visualizing accumulated effort.' },
+      { type: 'heading', content: 'Comparative Evaluation' },
+      { type: 'text', content: 'We ran a two-day within-subjects KakaoTalk simulation with two participants, comparing a function-only baseline (MissionBot — mission delivery and reminders only) against MyRhythm (same missions plus emotional-support messaging and voice-call companionship). Service-evaluation surveys, chat logs, and post-test interviews were analyzed for emotional support efficacy and usability. MyRhythm scored meaningfully higher on emotional-support measures: participants reported feeling encouraged by Rideumi and approaching missions with less pressure, in contrast to MissionBot\'s formal, transactional tone. Voice-call effects were modest and individual — suggesting that voice should remain optional rather than central — and participants flagged the need for explicit defer/substitute affordances when missions are environmentally infeasible. The study informs a redesign agenda for emotional support in non-face-to-face interventions: emotional safety must precede behavioral activation, channel/frequency control must rest with the user, and missions must be context-aware rather than one-size-fits-all.' },
+      { type: 'role', bullets: [
+        'Proposed the original concept that the team adopted and carried through the semester.',
+        'Co-author on the team paper for the SNU HCI Theory & Practice course (2025-2).',
+        'Participated end-to-end across the 3-month HCI research cycle: formative interviews, affinity diagramming, design-principle derivation, prototyping, and comparative user evaluation.',
+      ]},
+    ],
+  },
+
+  {
     title: 'NEMESIS',
     subtitle: 'Noise-suppressed Efficient MAE + Enhanced Superpatch Strategy',
     period: '2026',
