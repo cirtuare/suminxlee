@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TRID — Just react. Your direction takes shape.</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Instrument+Serif:ital@0;1&family=Momo+Signature&family=Permanent+Marker&family=Titan+One&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="landing/landing.css" />
+<link rel="stylesheet" href="landing/components.css" />
+<link rel="stylesheet" href="landing/sections.css" />
+<link rel="stylesheet" href="landing/fun.css" />
+<link rel="stylesheet" href="landing/responsive.css" />
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand"><span class="logo-mark bright"></span>T<b>R</b>ID</a>
+    <a href="TRID-dmg.dmg" download="TRID.dmg" class="nav-cta">Download for macOS</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero hero-split" id="top" data-screen-label="Hero">
+  <div class="hero-media">
+    <video src="landing/hero-logo.mp4" autoplay muted loop playsinline></video>
+  </div>
+  <div class="hero-copy">
+    <p class="hero-kicker reveal in">T<b>R</b>ID</p>
+    <h1 class="hero-h reveal in d1">Just react.<br>Your direction<br><em>takes shape.</em></h1>
+    <p class="hero-desc reveal in d2">Your goals are hard to put into words, but your taste shows as you browse. TRID catches it.</p>
+    <p class="hero-desc reveal in d2">Press a single emotion button. It reads the moment, maps your interests, and quietly composes a sense of direction for you.</p>
+    <div class="cta-row reveal in d3">
+      <a href="TRID-dmg.dmg" download="TRID.dmg" class="btn btn-primary btn-apple"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M11.04 8.5c-.02-1.62 1.32-2.4 1.38-2.43-.75-1.1-1.92-1.25-2.34-1.27-1-.1-1.94.58-2.45.58-.5 0-1.28-.57-2.1-.55-1.08.02-2.08.63-2.63 1.6-1.12 1.94-.29 4.82.8 6.4.54.77 1.17 1.64 2 1.6.8-.03 1.1-.51 2.07-.51.96 0 1.24.51 2.08.5.86-.02 1.4-.78 1.93-1.56.6-.9.85-1.76.86-1.8-.02-.01-1.66-.64-1.67-2.54zM9.5 3.78c.44-.54.74-1.28.66-2.03-.64.03-1.4.43-1.86.96-.41.47-.77 1.23-.68 1.95.72.06 1.45-.36 1.88-.88z"/></svg>Download for macOS</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ DEMO VIDEO ============ -->
+<section class="tile void" data-screen-label="Demo">
+  <div class="wrap" style="text-align:center;">
+    <p class="eyebrow reveal">See it in action</p>
+    <h2 class="display reveal d1" style="margin-bottom:32px;">Watch TRID work.</h2>
+    <div class="video-frame reveal d2">
+      <video src="trid-demo.mp4" poster="trid-demo-poster.jpg" controls preload="none" playsinline></video>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT STAGE ============ -->
+<section class="tile light fit" data-screen-label="Product">
+  <div class="wrap cap2">
+    <div class="c2-copy">
+      <p class="eyebrow reveal">A glance at your TRID</p>
+      <h2 class="display reveal d1">Everything you react to,<br>lined up in one place.</h2>
+    </div>
+    <div class="shotwrap reveal d2 c2-media">
+      <img class="shot framed" src="uploads/shot-dashboard.png" alt="Sumin's TRID dashboard — Up Next swipe card, Recent Activity, Liked and Saved for Later" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONCEPT + EMOTION BUTTONS ============ -->
+<section class="tile dark" id="emotion" data-screen-label="Emotion buttons">
+  <div class="wrap emo-split">
+    <div class="emo-copy">
+      <p class="eyebrow reveal">Core concept · Emotion buttons</p>
+      <h2 class="display reveal d1">You don’t type your goals.<br>You build them by <span class="kicker-accent">acting</span>.</h2>
+      <p class="lead reveal d2 emo-lead" style="margin:24px 0 0;">While you explore, just press a button.<br>Tap an emotion and the agent reads it and maps your taste.</p>
+      <div class="emo-legend reveal d2">
+        <span class="it p"><span class="e">😍</span>Fascinating</span>
+        <span class="it p"><span class="e">🔥</span>Want to try</span>
+        <span class="it p"><span class="e">🤔</span>Curious</span>
+        <span class="it n"><span class="e">😫</span>Difficult</span>
+        <span class="it n"><span class="e">👎</span>Dislike</span>
+      </div>
+      <p class="body reveal" style="margin:26px 0 0;max-width:56ch;">Positive reactions build your interests.<br>Negative ones stay separate and never pollute your recommendations.</p>
+    </div>
+    <div class="shotwrap reveal d2 emo-shot">
+      <img class="emo-arc" src="uploads/shot-emotion.png" alt="TRID floating emotion widget — five emoji buttons fanned out in an arc" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTERESTS GRAPH ============ -->
+<section class="tile light fit" id="interests" data-screen-label="Interests graph">
+  <div class="wrap cap2 flip">
+    <div class="c2-copy">
+      <p class="eyebrow reveal">Interest graph</p>
+      <h2 class="display reveal d1">Your interests<br>become a map.</h2>
+      <p class="lead reveal d2 lines" style="margin-top:18px;">TRID maps the topics it infers from your captures.<br>Positive ones boost your Up Next.<br>Down-ranked ones drop out of it.</p>
+    </div>
+    <div class="shotwrap reveal d2 c2-media">
+      <img class="shot framed" src="uploads/shot-interests.png" alt="TRID Interests — an inferred topic graph with SANA-WM, World Model, NVIDIA and Diffusion Transformer as the strongest nodes" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ GOAL DOCUMENT ============ -->
+<section class="tile parchment fit" id="goaldoc" data-screen-label="Goal Document">
+  <div class="wrap cap2">
+    <div class="c2-copy">
+      <p class="eyebrow reveal">Goal Document · AI Profile</p>
+      <h2 class="display reveal d1">Your goal document<br>writes itself.</h2>
+      <p class="lead reveal d2 lines" style="margin-top:18px;">The more you react, the more it fills in on its own.<br>The left is an editable document, the right is the profile your AI reads.<br>Export both in one file.</p>
+    </div>
+    <div class="shotwrap reveal d2 c2-media">
+      <img class="shot framed" src="uploads/shot-goaldoc.png" alt="TRID Goal Document — an editable markdown doc on the left and the AI profile TRID assembles on the right" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ HAND TO ANY AI ============ -->
+<section class="tile dark-2 fit" id="handoff" data-screen-label="Hand to AI">
+  <div class="wrap cap2 flip">
+    <div class="c2-copy">
+      <p class="eyebrow reveal">What sets it apart</p>
+      <h2 class="display reveal d1">Hand the curated ‘you’<br>to any AI.</h2>
+      <p class="lead reveal d2 lines" style="margin-top:18px;">Let an AI like Claude read the interest summary TRID assembled.<br>No more re-explaining yourself every time.</p>
+      <p class="hand-outro reveal d3">Export it as a file, pull it into Claude Code, or just tell Claude Desktop to <span class="cmd-inline">load my TRID profile</span>.</p>
+    </div>
+    <div class="shotwrap reveal d2 c2-media">
+      <img class="shot framed" src="uploads/shot-handoff.png" alt="Claude Desktop loading the TRID profile after the prompt ‘load my trid profile’" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="tile void final fit" id="download" data-screen-label="Download">
+  <div class="wrap wrap-narrow">
+    <p class="eyebrow reveal">Get started</p>
+    <h2 class="display reveal d1">Direction emerges<br>from stacked reactions.</h2>
+    <p class="lead reveal d2 lines" style="margin:0 auto;">A macOS app that gathers your scattered signals and shapes them into a direction.</p>
+    <div class="cta-row reveal d3">
+      <a href="TRID-dmg.dmg" download="TRID.dmg" class="btn btn-primary btn-apple"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M11.04 8.5c-.02-1.62 1.32-2.4 1.38-2.43-.75-1.1-1.92-1.25-2.34-1.27-1-.1-1.94.58-2.45.58-.5 0-1.28-.57-2.1-.55-1.08.02-2.08.63-2.63 1.6-1.12 1.94-.29 4.82.8 6.4.54.77 1.17 1.64 2 1.6.8-.03 1.1-.51 2.07-.51.96 0 1.24.51 2.08.5.86-.02 1.4-.78 1.93-1.56.6-.9.85-1.76.86-1.8-.02-.01-1.66-.64-1.67-2.54zM9.5 3.78c.44-.54.74-1.28.66-2.03-.64.03-1.4.43-1.86.96-.41.47-.77 1.23-.68 1.95.72.06 1.45-.36 1.88-.88z"/></svg>Download for macOS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" data-screen-label="Footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand"><span class="logo-mark"></span>T<b>R</b>ID</div>
+        <p class="footer-tag">Turns reactions into directions.</p>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 TRID.</span>
+      <span>contact: cirtuare@snu.ac.kr</span>
+    </div>
+  </div>
+</footer>
+
+<script src="landing/landing.js"></script>
+<script src="landing/fun.js"></script>
+
+<template id="__bundler_thumbnail" data-bg-color="#c6d3e1">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#c6d3e1"/>
+    <rect x="486" y="330" width="64" height="64" rx="10" fill="#0a857d"/>
+    <text x="566" y="394" font-family="'Courier New', monospace" font-size="92" font-weight="700" letter-spacing="6" fill="#16202b">T<tspan fill="#0a857d">R</tspan>ID</text>
+  </svg>
+</template>
+</body>
+</html>

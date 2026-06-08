@@ -1,0 +1,428 @@
+/* ============================================================
+   TRID landing — "fun SaaS" layer
+   Logo mark (tinted brand teal), animated hero accents, stats
+   count-up band, source marquee, glow buttons, tilt cards,
+   cursor glow. Layered on top of the Apple chassis.
+   ============================================================ */
+
+/* ---------- brand logo mark (white PNG tinted via mask) ---------- */
+.logo-mark {
+  display: inline-block;
+  width: 1em; height: 1em;
+  background-color: var(--mint);
+  -webkit-mask: url(mood-logo.png) center / contain no-repeat;
+  mask: url(mood-logo.png) center / contain no-repeat;
+  flex-shrink: 0;
+}
+.logo-mark.bright { background-color: var(--mint-bright); }
+
+/* nav brand: mark + wordmark */
+.nav-brand { display: inline-flex; align-items: center; gap: 9px; }
+.nav-brand .logo-mark { width: 22px; height: 22px; transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+.nav-brand:hover .logo-mark { transform: rotate(-18deg) scale(1.08); }
+
+/* ---------- hero badge pill ---------- */
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 13px; font-weight: 500; letter-spacing: -0.1px;
+  color: var(--on-dark);
+  background: rgba(61,204,199,0.10);
+  border: 1px solid rgba(61,204,199,0.30);
+  border-radius: var(--r-pill);
+  padding: 7px 15px 7px 12px;
+  margin: 0 0 26px;
+  backdrop-filter: blur(8px);
+}
+.hero-badge .live {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--mint-bright);
+  box-shadow: 0 0 0 0 rgba(95,227,221,0.6);
+  animation: livePulse 2.4s ease-out infinite;
+}
+@keyframes livePulse {
+  0% { box-shadow: 0 0 0 0 rgba(95,227,221,0.55); }
+  70% { box-shadow: 0 0 0 9px rgba(95,227,221,0); }
+  100% { box-shadow: 0 0 0 0 rgba(95,227,221,0); }
+}
+.hero-badge b { color: var(--mint-bright); font-weight: 600; }
+
+/* ============================================================
+   HERO — split: video on a matching airy background (left),
+   context (right). The page tone equals the video's own
+   backdrop, so the render melts seamlessly into the section.
+   ============================================================ */
+.hero.hero-split {
+  --hero-bg: #c6d3e1;       /* == video backdrop */
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: stretch;
+  gap: clamp(20px, 4vw, 64px);
+  text-align: left;
+  padding: calc(var(--nav-h) + 8px) clamp(28px, 6vw, 88px) 0 0;
+  background:
+    radial-gradient(80% 70% at 28% 48%, #d6e1ec 0%, #c6d3e1 52%, #bccbdb 100%);
+}
+.hero-media {
+  position: relative;
+  display: block;
+  margin: 0; padding: 0;
+}
+.hero-media video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 46%;
+  display: block;
+  /* feather every edge so the rectangle dissolves into the page */
+  -webkit-mask:
+    linear-gradient(to right, transparent 0%, #000 14%, #000 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask:
+    linear-gradient(to right, transparent 0%, #000 14%, #000 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.hero-copy { max-width: 520px; align-self: center; padding: 40px 0; }
+
+.hero-kicker {
+  font-family: var(--mono);
+  font-size: 27px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  color: #16202b; margin: 0 0 20px;
+  display: inline-flex; align-items: baseline; gap: 8px;
+}
+.hero-kicker b { color: var(--mint-ink); font-weight: 700; }
+.hero-kicker span { color: #5a6b7a; letter-spacing: 2.4px; }
+
+.hero-split .hero-h {
+  color: #16202b; max-width: none; margin: 0 0 28px;
+  font-size: clamp(38px, 4.6vw, 62px); line-height: 1.04; letter-spacing: -0.012em;
+}
+.hero-split .hero-h em { font-style: italic; color: var(--mint-ink); }
+
+.hero-desc {
+  font-size: clamp(15px, 1.25vw, 17px);
+  line-height: 1.62; letter-spacing: -0.005em;
+  color: #3a4855; margin: 0 0 16px; max-width: 46ch;
+  text-wrap: pretty;
+}
+.hero-desc:last-of-type { margin-bottom: 30px; }
+.hero-split .cta-row { justify-content: flex-start; margin: 0; }
+
+/* product stage section */
+.stage-sec { padding-top: 80px; padding-bottom: 96px; }
+.stage-sec .stage { margin-top: 44px; }
+
+/* ---------- responsive: stack ---------- */
+@media (max-width: 860px) {
+  .hero.hero-split {
+    grid-template-columns: 1fr; text-align: center;
+    padding: calc(var(--nav-h) + 20px) 26px 8px;
+    gap: 0;
+  }
+  /* video first, small + centered, floating like desktop */
+  .hero-media {
+    order: -1; min-height: 0;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 4px;
+  }
+  .hero-media video {
+    width: clamp(220px, 64vw, 300px);
+    height: auto; aspect-ratio: 1 / 1;
+    object-fit: cover; object-position: center 46%;
+    /* feather all edges so it dissolves into the page */
+    -webkit-mask:
+      radial-gradient(circle at 50% 47%, #000 56%, transparent 78%);
+    -webkit-mask-composite: source-over;
+    mask:
+      radial-gradient(circle at 50% 47%, #000 56%, transparent 78%);
+  }
+  .hero-copy { max-width: 560px; margin: 0 auto; padding: 0; }
+  .hero-kicker { margin-bottom: 14px; }
+  .hero-desc { margin-left: auto; margin-right: auto; }
+  .hero-split .cta-row { justify-content: center; }
+}
+
+@media (max-width: 420px) {
+  .hero-media video { width: clamp(190px, 58vw, 240px); }
+  .hero-split .hero-h { font-size: clamp(32px, 9vw, 44px); }
+}
+
+/* tiny inline sparkle as a teal mask too */
+.spark-mark {
+  display: inline-block; width: 1em; height: 1em; vertical-align: -0.12em;
+  background-color: var(--mint-bright);
+  -webkit-mask: url(mood-logo.png) -130% center / 240% no-repeat;
+  mask: url(mood-logo.png) -130% center / 240% no-repeat;
+}
+
+/* ---------- glow on primary buttons ---------- */
+.btn-primary {
+  position: relative;
+  box-shadow: 0 6px 22px -8px rgba(61,204,199,0.5);
+}
+.void .btn-primary, .dark .btn-primary, .dark-2 .btn-primary {
+  box-shadow: 0 8px 26px -8px rgba(61,204,199,0.45);
+}
+.btn-primary:hover { box-shadow: 0 12px 34px -8px rgba(61,204,199,0.7); }
+.btn-apple { display: inline-flex; align-items: center; gap: 9px; padding-left: 22px; padding-right: 22px; }
+.btn-apple svg { width: 18px; height: 18px; }
+
+/* refined editorial nav (reference-style) */
+.nav-brand {
+  font-family: var(--display);
+  font-size: 20px; font-weight: 400; letter-spacing: 0.2px;
+}
+.nav-brand b { font-weight: 400; color: var(--mint-bright); }
+.nav-cta {
+  background: transparent !important;
+  color: var(--on-dark) !important;
+  border: 1px solid rgba(255,255,255,0.22);
+  transition: border-color .2s ease, background .2s ease, color .2s ease;
+}
+.nav-cta:hover {
+  border-color: var(--mint);
+  color: var(--mint-bright) !important;
+  background: rgba(61,204,199,0.08) !important;
+}
+
+/* ---------- light nav theme (over the airy hero) ---------- */
+.nav.nav-light { border-bottom-color: rgba(20,32,43,0.08); }
+.nav.nav-light .nav-brand { color: #16202b !important; }
+.nav.nav-light .nav-brand b { color: var(--mint-ink) !important; }
+.nav.nav-light .nav-brand .logo-mark { background-color: var(--mint-ink); }
+.nav.nav-light .nav-links a { color: #51606e !important; }
+.nav.nav-light .nav-links a:hover { color: #16202b !important; }
+.nav.nav-light .nav-cta {
+  color: #16202b !important;
+  border-color: rgba(20,32,43,0.2);
+}
+.nav.nav-light .nav-cta:hover {
+  border-color: var(--mint-ink);
+  color: var(--mint-ink) !important;
+  background: rgba(61,204,199,0.10) !important;
+}
+
+/* ---------- stats count-up band ---------- */
+.stats-band {
+  border-top: 1px solid var(--hairline-dark);
+  border-bottom: 1px solid var(--hairline-dark);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.stat {
+  padding: 40px 26px; text-align: center;
+  border-right: 1px solid var(--hairline-dark);
+  position: relative;
+}
+.stat:last-child { border-right: 0; }
+.stat .n {
+  font-family: var(--display);
+  font-size: clamp(34px, 4.4vw, 52px); font-weight: 600; letter-spacing: -0.03em;
+  color: var(--mint-bright); line-height: 1; font-variant-numeric: tabular-nums;
+}
+.stat .n .suf { color: var(--on-dark); opacity: 0.55; }
+.stat .l { margin-top: 12px; font-size: 13.5px; color: var(--on-dark-mut); letter-spacing: -0.1px; }
+@media (max-width: 720px) {
+  .stats-band { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(2) { border-right: 0; }
+  .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--hairline-dark); }
+}
+
+/* ---------- source marquee ---------- */
+.marquee-sec { padding: 64px 0 72px; }
+.marquee-cap { text-align: center; font-size: 12.5px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--on-dark-mut); margin: 0 0 30px; }
+.marquee { position: relative; overflow: hidden; -webkit-mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.marquee-track { display: flex; gap: 56px; width: max-content; animation: scrollx 34s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-track .src-chip {
+  display: inline-flex; align-items: center; gap: 10px; white-space: nowrap;
+  font-size: 19px; font-weight: 600; letter-spacing: -0.3px; color: var(--on-dark);
+  opacity: 0.62; transition: opacity .2s ease, color .2s ease;
+}
+.marquee-track .src-chip:hover { opacity: 1; color: var(--mint-bright); }
+.marquee-track .src-chip .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); }
+@keyframes scrollx { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+/* ---------- tilt / hover cards ---------- */
+.tilt { transition: transform .2s cubic-bezier(.2,.7,.2,1); transform-style: preserve-3d; will-change: transform; }
+
+/* ---------- cursor glow on hero ---------- */
+.hero-glow {
+  position: absolute; width: 520px; height: 520px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(61,204,199,0.16) 0%, rgba(61,204,199,0) 68%);
+  transform: translate(-50%, -50%); pointer-events: none; z-index: 0;
+  left: 50%; top: 36%; opacity: 0; transition: opacity .6s ease;
+}
+.hero:hover .hero-glow { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .hero-glow { display: none; } }
+
+/* ---------- section number ribbons (fun structural cue) ---------- */
+.eyebrow.with-mark { display: inline-flex; align-items: center; gap: 8px; }
+.eyebrow .logo-mark { width: 14px; height: 14px; }
+
+/* emotion tiles: add a little pop on the badge */
+.emo-tile { cursor: default; }
+.emo-tile .big { transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+.emo-tile:hover .big { transform: scale(1.18) rotate(-6deg); }
+
+/* footer brand mark */
+.footer-brand { display: inline-flex; align-items: center; gap: 9px; }
+.footer-brand .logo-mark { width: 20px; height: 20px; background-color: var(--mint-ink); }
+
+/* ============================================================
+   AIRY THEME — unify every section to the hero's light tone.
+   Recolors backgrounds + flips dark-surface components to
+   dark-ink-on-light. Layered last so it wins by source order.
+   ============================================================ */
+:root {
+  --airy-a: #cdd9e6;          /* lighter section tone */
+  --airy-b: #c4d2e1;          /* deeper section tone  */
+  --airy-card: #ffffff;
+  --airy-ink: #16202b;
+  --airy-ink-mut: #3a4855;
+  --airy-meta: #5a6b7a;
+  --airy-hair: rgba(20,32,43,0.10);
+  --airy-hair-soft: rgba(20,32,43,0.06);
+}
+
+/* ---- section backgrounds ---- */
+.tile { color: var(--airy-ink); border-top: 1px solid var(--airy-hair-soft); }
+.tile.void, .tile.parchment, .tile.pearl { background: var(--airy-a); }
+.tile.dark, .tile.dark-2, .tile.light { background: var(--airy-b); }
+
+/* ---- text on (formerly dark) surfaces ---- */
+.tile.dark, .tile.dark-2, .tile.void { color: var(--airy-ink); }
+.tile.dark h1, .tile.dark h2, .tile.dark h3,
+.tile.dark-2 h1, .tile.dark-2 h2, .tile.dark-2 h3,
+.tile.void h1, .tile.void h2, .tile.void h3 { color: var(--airy-ink); }
+.tile .lead, .tile .body {
+  color: #3a4855;
+  font-size: clamp(15px, 1.25vw, 17px);
+  font-weight: 400; line-height: 1.62; letter-spacing: -0.005em;
+  text-wrap: pretty;
+}
+.tile .meta { color: var(--airy-meta); }
+.tile .eyebrow { color: var(--mint-ink); }
+.tile .kicker-accent { color: var(--mint-ink); }
+.final h2, .final .display { color: var(--airy-ink); }
+.final .lead { color: var(--airy-ink-mut); }
+#handoff b { color: var(--mint-ink) !important; }
+
+/* ghost button on light */
+.tile .btn-ghost { color: var(--mint-ink); }
+.tile .btn-ghost:hover { background: rgba(61,204,199,0.10); }
+
+/* ---- stats band ---- */
+.stats-band { border-color: var(--airy-hair); }
+.stat { border-right-color: var(--airy-hair); }
+.stat .n { color: var(--mint-ink); }
+.stat .n .suf { color: var(--airy-ink); opacity: 0.5; }
+.stat .l { color: var(--airy-ink-mut); }
+@media (max-width: 720px) {
+  .stat:nth-child(1), .stat:nth-child(2) { border-bottom-color: var(--airy-hair); }
+}
+
+/* ---- source marquee ---- */
+.marquee-cap { color: var(--airy-meta); }
+.marquee-track .src-chip { color: var(--airy-ink); opacity: 0.6; }
+.marquee-track .src-chip:hover { color: var(--mint-ink); opacity: 1; }
+.marquee-track .src-chip .dot { background: var(--mint-ink); }
+
+/* ---- emotion legend tiles ---- */
+.emo-tile {
+  background: var(--airy-card); border-color: var(--airy-hair);
+  box-shadow: 0 12px 30px -18px rgba(20,32,43,0.4);
+}
+.emo-tile .nm { color: var(--airy-ink); }
+.emo-tile .ds { color: var(--airy-ink-mut); }
+
+/* positive / negative rail cards */
+.pn { background: var(--airy-card); border-color: var(--airy-hair); }
+.pn p { color: var(--airy-ink-mut); }
+.pn.p .h { color: var(--mint-ink); }
+
+/* ---- Up Next deck chrome ---- */
+.deck-progress .bar { background: rgba(20,32,43,0.12); }
+.deck-progress .num { color: var(--airy-meta); }
+.deck-hint { color: var(--airy-ink-mut); }
+.deck-hint kbd {
+  color: var(--airy-ink); background: rgba(20,32,43,0.05);
+  border-color: rgba(20,32,43,0.16);
+}
+.deck-empty { color: var(--airy-ink); border-color: rgba(20,32,43,0.22); }
+.deck-empty .s { color: var(--airy-meta); }
+.tally-item {
+  background: var(--airy-card); border-color: var(--airy-hair);
+  box-shadow: 0 12px 30px -18px rgba(20,32,43,0.4);
+}
+.tally-item .ti-l { color: var(--airy-ink); }
+.tally-item .ti-s { color: var(--airy-meta); }
+.tally-item .ti-n { color: var(--mint-ink); }
+
+/* ---- Hand-to-AI cards: caption-scale, no box ---- */
+.ai-methods { gap: 14px 40px; margin-top: 30px; }
+.ai-card {
+  background: transparent; border: none; box-shadow: none;
+  border-radius: 0; padding: 0; gap: 4px;
+}
+.ai-card:hover { transform: none; border: none; }
+.ai-card .num { color: var(--mint-ink); font-size: 10px; }
+.ai-card h4 { color: var(--airy-ink); font-size: 12.5px; font-weight: 600; }
+.ai-card p { color: var(--airy-ink-mut); font-size: 11px; line-height: 1.45; }
+.ai-card .cmd {
+  color: var(--mint-ink); background: var(--mint-soft);
+  border-color: rgba(61,204,199,0.3);
+  font-size: 10.5px; padding: 2px 7px;
+}
+
+/* ---- interests segmented control sits on airy now ---- */
+.seg { background: rgba(255,255,255,0.55); }
+
+/* ---- footer ---- */
+.footer { background: #bccbdb; color: var(--airy-ink-mut); border-top: 1px solid var(--airy-hair); }
+.footer-top { border-bottom-color: var(--airy-hair); }
+.footer-legal { border-color: var(--airy-hair); }
+
+/* ============================================================
+   INTERACTIONS — scroll progress, scroll-spy nav, hover life
+   ============================================================ */
+
+/* scroll progress bar */
+.scroll-prog {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 200;
+  background: linear-gradient(90deg, var(--mint-ink), var(--mint-bright));
+  transform: scaleX(0); transform-origin: 0 50%; will-change: transform;
+}
+
+/* active nav link (scroll-spy) */
+.nav.nav-light .nav-links a { transition: color .2s ease; position: relative; }
+.nav.nav-light .nav-links a.active { color: var(--mint-ink) !important; }
+.nav.nav-light .nav-links a.active::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px;
+  background: var(--mint-ink); border-radius: 2px;
+}
+
+/* app screenshots: hover lift + cursor */
+.shotwrap .shot { transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease; }
+@media (hover: hover) {
+  .shotwrap { cursor: pointer; }
+  .shotwrap:hover .shot.framed { box-shadow: 0 56px 120px -34px rgba(20,32,43,0.5); }
+}
+
+/* emotion legend: emoji pops on hover */
+.emo-legend .it { transition: color .2s ease; cursor: default; }
+.emo-legend .it .e { display: inline-block; transition: transform .25s cubic-bezier(.2,.7,.2,1); }
+.emo-legend .it:hover { color: var(--airy-ink); }
+.emo-legend .it:hover .e { transform: scale(1.35) rotate(-7deg); }
+
+/* hand-to-AI method cards: subtle lift + command glow on hover */
+.tile .ai-card { transition: transform .22s ease; }
+@media (hover: hover) {
+  .tile .ai-card:hover { transform: translateY(-4px); }
+  .tile .ai-card:hover .cmd { background: var(--mint-soft); border-color: rgba(61,204,199,0.5); color: var(--mint-ink); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-prog, .shotwrap .shot, .emo-legend .it .e, .tile .ai-card { transition: none; }
+}
