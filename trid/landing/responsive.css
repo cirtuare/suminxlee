@@ -1,0 +1,104 @@
+/* ============================================================
+   TRID landing — responsive hardening
+   Loaded LAST so it overrides the base section/component CSS.
+   Fixes: mobile 100vh jank, sideways overflow, phone type/padding.
+   ============================================================ */
+
+/* Unify the TRID wordmark typeface everywhere (the hero kicker was
+   monospace; nav + footer use Pretendard). */
+.hero-kicker { font-family: var(--font); }
+
+/* Hero description: let it spread to the full copy column instead of
+   the narrow 46ch cap. */
+.hero-copy { max-width: 600px; }
+.hero-desc { max-width: none; }
+
+/* ---------- Brand logo mark ----------
+   Use a pre-tinted #3DCCC7 PNG instead of a CSS mask. The mask
+   approach can fail to render across some browsers/hosts; this is
+   bulletproof and locks the brand point colour everywhere. */
+.logo-mark {
+  background: url(mood-logo-teal.png) center / contain no-repeat !important;
+  -webkit-mask: none !important;
+          mask: none !important;
+}
+
+/* ---------- Demo video frame ---------- */
+.video-frame {
+  max-width: 1000px; margin: 0 auto;
+  border-radius: 20px; overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 40px 100px -28px rgba(0,0,0,0.7);
+  aspect-ratio: 16 / 9;
+}
+.video-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 640px) { .video-frame { border-radius: 14px; } }
+
+/* Small-viewport height: avoids mobile Safari's URL-bar making the
+   hero / one-screen tiles jump or overflow. Falls back to the base
+   100vh on browsers without svh support. */
+.hero,
+.tile.fit { min-height: 100svh; }
+
+/* Never let a long word or a nowrap phrase force horizontal scroll. */
+h1, h2, h3, p,
+.lead, .body, .display, .hero-h,
+.cmd-inline { overflow-wrap: break-word; }
+
+/* ---------- Tablet / small laptop ---------- */
+@media (max-width: 900px) {
+  .tile { padding: 72px 24px; }
+  .emo-copy h2 { white-space: normal; }   /* drop the desktop nowrap early */
+}
+
+/* Hero orb (stacked mobile video): smaller + dead-centered so the
+   logo isn't cropped high / "trapped" in the circle. */
+@media (max-width: 860px) {
+  .hero-media { justify-content: center; }
+  .hero-media video {
+    width: clamp(168px, 50vw, 228px);
+    object-position: center center;
+    -webkit-mask: radial-gradient(circle at 50% 50%, #000 58%, transparent 80%);
+            mask: radial-gradient(circle at 50% 50%, #000 58%, transparent 80%);
+  }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 640px) {
+  :root { --nav-h: 46px; }
+
+  .tile { padding: 56px 20px; }
+  /* "one screen per tile" is a desktop conceit — let phones flow. */
+  .tile.fit { min-height: auto; padding: 64px 20px; }
+  .hero { min-height: auto; padding: calc(var(--nav-h) + 28px) 20px 48px; }
+
+  .nav-inner { padding: 0 18px; gap: 14px; }
+  .nav-cta { padding: 6px 13px; }
+
+  /* type scales down with a comfortable floor */
+  .hero-split .hero-h { font-size: clamp(34px, 11vw, 48px); }
+  .display { font-size: clamp(28px, 8.4vw, 40px); }
+  .cap2 .c2-copy h2 { font-size: clamp(28px, 8.4vw, 40px); }
+  .lead, .lead.lines, .emo-lead { font-size: clamp(16px, 4.6vw, 19px); }
+  .body, .emo-copy .body { font-size: clamp(14px, 4vw, 16px); }
+
+  /* media must not dominate the fold */
+  .cap2 .c2-media .shot { max-height: none; }
+  .emo-arc { width: 100%; max-width: 340px; }
+
+  /* easy-to-tap CTAs */
+  .hero-split .cta-row, .final .cta-row { justify-content: center; }
+  .btn { padding: 13px 22px; }
+
+  /* footer legal stacks instead of cramped space-between */
+  .footer-legal { flex-direction: column; gap: 6px; }
+  .footer-top { gap: 24px; }
+}
+
+/* ---------- Small phone ---------- */
+@media (max-width: 380px) {
+  .nav-brand { letter-spacing: 1px; }
+  .nav-cta { font-size: 12px; padding: 6px 11px; }
+  .emo-legend { gap: 6px 12px; }
+}
