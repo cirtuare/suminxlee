@@ -43,11 +43,12 @@ export default function About() {
             </h1>
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <div style={{
+              <div className="prof-swap" style={{
                 width: '62%', maxWidth: 210, aspectRatio: '4/5',
                 WebkitMaskImage: MASK, maskImage: MASK,
               }}>
-                <img src={withBase('/img/prof-pic.png')} alt="Sumin Lee" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <img src={withBase('/img/prof-pic.png')} alt="Sumin Lee" />
+                <img className="prof-hidden" src={withBase('/img/prof-hidden.png')} alt="" aria-hidden="true" />
               </div>
             </div>
 
@@ -74,11 +75,12 @@ export default function About() {
         ) : (
           /* ── Desktop: Photo left | Name + Bio right ── */
           <div style={{ display: 'flex', flexDirection: 'row', gap: '2.5rem', alignItems: 'flex-start' }}>
-            <div style={{
+            <div className="prof-swap" style={{
               flexShrink: 0, width: 170, aspectRatio: '4/5',
               WebkitMaskImage: MASK, maskImage: MASK,
             }}>
-              <img src={withBase('/img/prof-pic.png')} alt="Sumin Lee" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <img src={withBase('/img/prof-pic.png')} alt="Sumin Lee" />
+              <img className="prof-hidden" src={withBase('/img/prof-hidden.png')} alt="" aria-hidden="true" />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
