@@ -106,8 +106,8 @@ canvas { display: block; }
 
 .prof-swap { position: relative; }
 .prof-swap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.prof-swap .prof-hidden { position: absolute; inset: 0; opacity: 0; transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
-.prof-swap:hover .prof-hidden { opacity: 1; }
+.prof-swap .prof-hidden { position: absolute; inset: 0; opacity: 0; transform: scale(1.04); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+.prof-swap:hover .prof-hidden { opacity: 1; transform: scale(1); }
 
 .soc-btn {
   display: flex; align-items: center; justify-content: center;
