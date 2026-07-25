@@ -15,47 +15,6 @@ export const TAG_COL: Record<TagName, string> = {
 export const PROJECTS: Project[] = [
 
   {
-    title: 'CADD',
-    subtitle: 'Cross-Modal Affective Dissonance Detection for Reflective Journaling',
-    period: '2026',
-    role: 'First & Sole Author',
-    venue: 'Under review',
-    tags: ['HCI', 'ML'],
-    pinned: true,
-    cg: 'cg8',
-    thumbnail: '/projects/CADD/fig_dacm.png',
-    links: [
-      { label: 'arXiv', href: 'https://arxiv.org/abs/2604.27517' },
-      { label: 'GitHub', href: 'https://github.com/cirresearch/CADD' },
-    ],
-    bullets: [],
-    body: [
-      { type: 'text', content: 'Digital journaling is designed to be honest, yet users subconsciously sanitize their narratives even in private writing — maintaining a positive self-image on the page while stress or anxiety accumulates in their voice. This authenticity gap is well-documented in the psychology of impression management and self-concealment, and current journaling applications provide no mechanism to detect or surface it. CADD (Cross-Modal Affective Dissonance Detection) formalizes this gap as a machine learning problem: rather than treating the divergence between text sentiment and vocal affect as noise, it treats it as a detection target.' },
-      { type: 'image', src: '/projects/CADD/fig_reflectjournal.png', caption: 'ReflectJournal — a proof-of-concept iOS app that operationalizes CADD. Users record a journal entry by voice; the app transcribes it and runs the DACM model to detect affective dissonance between the transcript and the audio.' },
-      { type: 'heading', content: 'Task Definition' },
-      { type: 'text', content: 'Given a text transcript T and a paired audio recording A, the model must assign one of three labels: Masking (positive text, negative acoustics), Coping (negative text, positive acoustics), or Congruent (aligned). The taxonomy is grounded in Gross\'s process model of emotion regulation. A text-only classifier degenerates to always predicting Congruent, confirming that any F1 gain above random must exploit acoustic information.' },
-      { type: 'heading', content: 'Dataset: CADD-Journal' },
-      { type: 'text', content: 'CADD-Journal is a 1,800-sample TTS dataset built on a shared-sentence-pool design — 100 seed sentences rendered across all three acoustic conditions, so text content carries zero discriminative signal by construction. Splits are stratified at the sentence level; 420 samples per class across three TTS voices (Jarnathan, Juniper, Eve), yielding a balanced 1,260/270/270 train/val/test split.' },
-      { type: 'heading', content: 'Architecture: DACM' },
-      { type: 'image', src: '/projects/CADD/fig_dacm.png', caption: 'DACM (Dissonance-Aware Cross-Modal model). Frozen XLM-RoBERTa and WavLM encoders feed Asymmetric Cross-Modal Attention (pink), where each modality\'s pooled vector queries the opposing modality\'s full token sequence — resolving the scalar-softmax gradient degeneracy of standard pooled-to-pooled attention. The Dissonance Interaction Module (orange) computes gated difference, Hadamard product, and cosine similarity, producing the CADD label and an interpretable mismatch score S ∈ [0, 1].' },
-      { type: 'text', content: 'Standard pooled-to-pooled cross-attention is degenerate: the softmax collapses to a scalar, leaving key and value matrices with near-zero gradients. DACM resolves this by using one modality\'s pooled vector as the query against the opposing modality\'s full token sequence. Ablation confirms asymmetric attention is the dominant driver (+0.242 macro-F1 over the pooled-fusion baseline). The Dissonance Interaction Module adds a further +0.033 on top of attention-contextualized features.' },
-      { type: 'heading', content: 'Results' },
-      { type: 'text', content: 'DACM achieves macro-F1 0.711 ± 0.025 on CADD-Journal, versus a text-only baseline of 0.167 and a random ceiling of 0.333. Zero-shot evaluation across three naturalistic corpora (CMU-MOSEI, IEMOCAP, CH-SIMS) reveals a severe domain gap — the model collapses to near-random on real speech — quantifying for the first time how far TTS-synthesized dissonance diverges from naturalistic human expression.' },
-      { type: 'role', bullets: [
-        'First and sole author.',
-        'Formulated the CADD task and three-way label taxonomy grounded in emotion regulation theory.',
-        'Designed the CADD-Journal TTS dataset collection protocol and shared-sentence-pool design.',
-        { text: 'Built the DACM architecture.', sub: [
-          'Asymmetric cross-modal attention: each modality\'s pooled vector queries the opposing modality\'s full token sequence, resolving pooled-to-pooled gradient degeneracy',
-          'Dissonance Interaction Module: gated difference, Hadamard product, and cosine similarity producing the interpretable mismatch score S ∈ [0, 1]',
-        ]},
-        'Ran all experiments and ablation studies.',
-        'Developed ReflectJournal as a proof-of-concept iOS deployment platform.',
-      ]},
-    ],
-  },
-
-  {
     title: 'AllClear',
     subtitle: 'SNU Club Discovery App',
     period: 'Sep 2025 – Present',

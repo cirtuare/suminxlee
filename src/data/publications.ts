@@ -2,14 +2,6 @@ import type { Publication, PubType } from '../types';
 
 export const PUBS: Publication[] = [
   {
-    id: 'p3', type: 'Preprint', year: '2026',
-    title: "I'm Fine, But My Voice Isn't: Cross-Modal Affective Dissonance Detection for Reflective Journaling",
-    authors: 'Sumin Lee†',
-    venue: 'Under review',
-    note: 'First author',
-    href: 'https://arxiv.org/abs/2604.27517',
-  },
-  {
     id: 'c2', type: 'Conference', year: '2026',
     title: '3D Tactile Display for Non-visual Color Perception',
     authors: 'Sumin Lee*, Yehyeon Park*',
