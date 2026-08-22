@@ -6,7 +6,6 @@ import Layout from './components/Layout';
 import About from './components/About';
 import Publications from './components/Publications';
 import Projects from './components/Projects';
-import CV from './components/CV';
 
 function toSlug(title: string) {
   return title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
@@ -42,7 +41,6 @@ function TabLayout({ tab }: { tab: Tab }) {
       {tab === 'about'        && <About />}
       {tab === 'publications' && <Publications />}
       {tab === 'projects'     && <ProjectsRoute />}
-      {tab === 'cv'           && <CV />}
     </Layout>
   );
 }
@@ -54,7 +52,6 @@ export default function App() {
       <Route path="/publications" element={<TabLayout tab="publications" />} />
       <Route path="/projects" element={<TabLayout tab="projects" />} />
       <Route path="/projects/:slug" element={<TabLayout tab="projects" />} />
-      <Route path="/cv" element={<TabLayout tab="cv" />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

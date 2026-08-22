@@ -1,4 +1,4 @@
-import { MailIcon, GithubIcon, LinkedinIcon } from '../icons';
+import { MailIcon, GithubIcon, LinkedinIcon, DocumentIcon } from '../icons';
 import { useIsMobile } from '../hooks/useIsMobile';
 import Eyebrow from './Eyebrow';
 import { withBase } from '../utils/withBase';
@@ -7,9 +7,11 @@ const SOCIAL = [
   { Icon: MailIcon,     href: 'mailto:cirtuare@snu.ac.kr',           label: 'cirtuare@snu.ac.kr' },
   { Icon: GithubIcon,   href: 'https://github.com/cirtuare',          label: 'github.com/cirtuare' },
   { Icon: LinkedinIcon, href: 'https://www.linkedin.com/in/cirtuare', label: 'linkedin.com/in/cirtuare' },
+  { Icon: DocumentIcon, href: withBase('/cv/Sumin-Lee-Resume.pdf'),   label: 'Curriculum vitae (PDF)' },
 ];
 
 const NEWS = [
+  { date: 'Jul 2026', text: 'Joined KIXLAB, advised by Prof. Juho Kim.' },
   { date: 'May 2026', text: 'Opened my personal website!' },
   { date: 'Feb 2026', text: 'Joined the SNU IMSI Lab, advised by Prof. Nam-joon Kim.' },
   { date: 'Jan 2026', text: 'Presented a poster at HCI Korea 2026.' },

@@ -1,4 +1,4 @@
-export type Tab = 'about' | 'publications' | 'projects' | 'cv';
+export type Tab = 'about' | 'publications' | 'projects';
 export type PubType = 'Conference' | 'Preprint';
 export type TagName = 'HCI' | 'Civil Eng' | 'Design' | 'iOS' | 'Medical' | 'ML' | 'Dev';
 
