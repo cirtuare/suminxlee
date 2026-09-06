@@ -45,12 +45,11 @@ export default function About() {
             </h1>
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <div className="prof-swap" style={{
+              <div className="profile-photo" style={{
                 width: '62%', maxWidth: 210, aspectRatio: '4/5',
                 WebkitMaskImage: MASK, maskImage: MASK,
               }}>
-                <img src={withBase('/img/prof-pic.png')} alt="Sumin Lee" />
-                <img className="prof-hidden" src={withBase('/img/prof-hidden.png')} alt="" aria-hidden="true" />
+                <img src={withBase('/img/prof-pic-crop.jpg')} alt="Sumin Lee" />
               </div>
             </div>
 
@@ -77,12 +76,11 @@ export default function About() {
         ) : (
           /* ── Desktop: Photo left | Name + Bio right ── */
           <div style={{ display: 'flex', flexDirection: 'row', gap: '2.5rem', alignItems: 'flex-start' }}>
-            <div className="prof-swap" style={{
+            <div className="profile-photo" style={{
               flexShrink: 0, width: 170, aspectRatio: '4/5',
               WebkitMaskImage: MASK, maskImage: MASK,
             }}>
-              <img src={withBase('/img/prof-pic.png')} alt="Sumin Lee" />
-              <img className="prof-hidden" src={withBase('/img/prof-hidden.png')} alt="" aria-hidden="true" />
+              <img src={withBase('/img/prof-pic-crop.jpg')} alt="Sumin Lee" />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
