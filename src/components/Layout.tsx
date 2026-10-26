@@ -67,7 +67,7 @@ export default function Layout({ tab, setTab, children }: Props) {
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
       }}>
         <Eyebrow>© 2026 Sumin Lee</Eyebrow>
-        <Eyebrow>cirtuare(at)snu.ac.kr</Eyebrow>
+        <Eyebrow style={{ textTransform: 'none' }}>cirtuare(at)snu.ac.kr</Eyebrow>
       </footer>
     </div>
   );
