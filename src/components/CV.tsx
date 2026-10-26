@@ -235,12 +235,6 @@ export default function CV() {
             </div>
             {[
               {
-                badge: 'P',
-                title: "I'm Fine, But My Voice Isn't: Cross-Modal Affective Dissonance Detection for Reflective Journaling",
-                authors: 'Sumin Lee†',
-                venue: 'Under review',
-              },
-              {
                 badge: 'C',
                 title: '3D Tactile Display for Non-visual Color Perception',
                 authors: 'Sumin Lee*†, Yehyeon Park*',
