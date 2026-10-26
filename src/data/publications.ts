@@ -10,14 +10,6 @@ export const PUBS: Publication[] = [
     href: 'https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12746013',
   },
   {
-    id: 'p2', type: 'Preprint', year: '2025',
-    title: 'NEMESIS: Noise-suppressed Efficient MAE with Enhanced Superpatch Integration Strategy',
-    authors: 'Kyeonghun Kim, Hyeonseok Jung, Youngung Han, Hyunsu Go, Eunseob Choi, Seongbin Park, Junsu Lim, Jiwon Yang, Sumin Lee, Insung Hwang, Ken Ying-Kai Liao, Nam-Joon Kim†',
-    venue: 'Under review',
-    note: 'Co-author',
-    href: 'https://arxiv.org/abs/2604.01612',
-  },
-  {
     id: 'p1', type: 'Preprint', year: '2025',
     title: 'MATHENA: Mamba-based Architectural Tooth Hierarchical Estimator and Holistic Evaluation Network for Anatomy',
     authors: 'Kyeonghun Kim, Jaehyung Park, Youngung Han, ..., Sumin Lee, ..., Nam-Joon Kim†',

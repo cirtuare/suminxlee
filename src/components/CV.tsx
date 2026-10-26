@@ -242,12 +242,6 @@ export default function CV() {
               },
               {
                 badge: 'P',
-                title: 'NEMESIS: Noise-suppressed Efficient MAE with Enhanced Superpatch Integration Strategy',
-                authors: 'Kyeonghun Kim, Hyeonseok Jung, Youngung Han, Hyunsu Go, Eunseob Choi, Seongbin Park, Junsu Lim, Jiwon Yang, Sumin Lee, Insung Hwang, Ken Ying-Kai Liao, Nam-Joon Kim†',
-                venue: 'Under review',
-              },
-              {
-                badge: 'P',
                 title: 'MATHENA: Mamba-based Architectural Tooth Hierarchical Estimator and Holistic Evaluation Network for Anatomy',
                 authors: 'Kyeonghun Kim, Jaehyung Park, Youngung Han, Anna Jung, Seongbin Park, Sumin Lee, Jiwon Yang, Jiyoon Han, Subeen Lee, Junsu Lim, Hyunsu Go, Eunseob Choi, Hyeonseok Jung, Soo Yong Kim, Woo Kyoung Jeong, Won Jae Lee, Pa Hong, Hyuk-Jae Lee, Ken Ying-Kai Liao, Nam-Joon Kim†',
                 venue: 'Under review',

@@ -55,7 +55,8 @@ export default function About() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
-                I am an undergraduate student in Civil, Urban & Environmental Engineering and Information Science & Culture at{' '}
+                I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
+                <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong> at{' '}
                 <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
                 {' '}I am drawn to spaces where technology meaningfully improves everyday life — not just in high-impact breakthroughs, but in the incremental ways that quietly shape how people live. On the side, I have worked as an iOS developer, with 4 released products reaching 10,000+ users.
               </p>
@@ -93,7 +94,8 @@ export default function About() {
               </h1>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.88rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
-                  I am an undergraduate student in Civil, Urban & Environmental Engineering and Information Science & Culture at{' '}
+                  I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
+                  <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong> at{' '}
                   <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
                   {' '}I am drawn to spaces where technology meaningfully improves everyday life — not just in high-impact breakthroughs, but in the incremental ways that quietly shape how people live. On the side, I have worked as an iOS developer, with 4 released products reaching 10,000+ users.
                 </p>
