@@ -55,15 +55,20 @@ export default function About() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
-                I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
-                <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong> at{' '}
-                <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
-                {' '}I am drawn to spaces where technology meaningfully improves everyday life, not just in high-impact breakthroughs, but in the incremental ways that quietly shape how people live. On the side, I have worked as an iOS developer, with 4 released products reaching 10,000+ users.
+                Hi, I’m Sumin Lee, an undergraduate at{' '}
+                <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>
+                {' '}studying Civil, Urban & Environmental Engineering and{' '}
+                <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong>.
               </p>
               <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
                 My research interests lie in{' '}
-                <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-AI interaction</span>
-                , with a growing curiosity toward how humans and AI collaborate and how multimodal engagement with AI shapes not only the outcomes of that collaboration but also people's understanding and wellbeing. At the core is an interest in how AI can improve quality of life, not only in high-impact applications but in the incremental ways that shape everyday experience.
+                <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-computer interaction (HCI)</span>
+                {' '}and{' '}
+                <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-AI interaction (HAI)</span>.
+                {' '}I’m interested in designing interactions that support communication and collaboration between people and generative AI.
+              </p>
+              <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
+                On the side, I’ve worked as an iOS developer, contributing to four released products reaching over 10,000 users.
               </p>
               <div style={{ display: 'flex', gap: '0.45rem', paddingTop: '0.25rem' }}>
                 {SOCIAL.map(({ Icon, href, label }) => (
@@ -94,15 +99,20 @@ export default function About() {
               </h1>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.88rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
-                  I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
-                  <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong> at{' '}
-                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
-                  {' '}I am drawn to spaces where technology meaningfully improves everyday life, not just in high-impact breakthroughs, but in the incremental ways that quietly shape how people live. On the side, I have worked as an iOS developer, with 4 released products reaching 10,000+ users.
+                  Hi, I’m Sumin Lee, an undergraduate at{' '}
+                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>
+                  {' '}studying Civil, Urban & Environmental Engineering and{' '}
+                  <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong>.
                 </p>
                 <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.88rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
                   My research interests lie in{' '}
-                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-AI interaction</span>
-                  , with a growing curiosity toward how humans and AI collaborate and how multimodal engagement with AI shapes not only the outcomes of that collaboration but also people's understanding and wellbeing. At the core is an interest in how AI can improve quality of life, not only in high-impact applications but in the incremental ways that shape everyday experience.
+                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-computer interaction (HCI)</span>
+                  {' '}and{' '}
+                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-AI interaction (HAI)</span>.
+                  {' '}I’m interested in designing interactions that support communication and collaboration between people and generative AI.
+                </p>
+                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.88rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
+                  On the side, I’ve worked as an iOS developer, contributing to four released products reaching over 10,000 users.
                 </p>
                 <div style={{ display: 'flex', gap: '0.45rem', paddingTop: '0.1rem' }}>
                   {SOCIAL.map(({ Icon, href, label }) => (
