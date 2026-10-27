@@ -128,7 +128,7 @@ export default function About() {
         {/* ── News ── */}
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
-            <Eyebrow style={{ fontSize: '0.6rem', letterSpacing: '0.04em', textTransform: 'none' }}>News</Eyebrow>
+            <Eyebrow style={{ fontSize: '0.75rem', letterSpacing: '0.04em', textTransform: 'none' }}>News</Eyebrow>
             <div style={{ flex: 1, height: 1, background: 'rgba(40,8,14,0.08)' }} />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
