@@ -65,12 +65,11 @@ export default function About() {
               <ProfileLinks />
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
-                Hi, I’m Sumin Lee, an undergraduate at{' '}
-                <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>
-                {' '}studying Civil, Urban & Environmental Engineering and{' '}
-                <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong>.
+                I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
+                <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong> at{' '}
+                <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
               </p>
               <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                 My research interests lie in{' '}
@@ -105,12 +104,11 @@ export default function About() {
               }}>
                 Sumin Lee
               </h1>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
-                  Hi, I’m Sumin Lee, an undergraduate at{' '}
-                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>
-                  {' '}studying Civil, Urban & Environmental Engineering and{' '}
-                  <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong>.
+                  I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
+                  <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong> at{' '}
+                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
                 </p>
                 <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   My research interests lie in{' '}
