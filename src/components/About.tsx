@@ -105,19 +105,19 @@ export default function About() {
                 Sumin Lee
               </h1>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.90625rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
                   <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong> at{' '}
                   <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
                 </p>
-                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.90625rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   My research interests lie in{' '}
                   <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-computer interaction (HCI)</span>
                   {' '}and{' '}
                   <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-AI interaction (HAI)</span>.
                   {' '}I’m interested in designing interactions that support communication and collaboration between people and generative AI.
                 </p>
-                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.90625rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   On the side, I’ve worked as an iOS developer, contributing to four released products reaching over 10,000 users.
                 </p>
               </div>
@@ -128,7 +128,7 @@ export default function About() {
         {/* ── News ── */}
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
-            <Eyebrow style={{ letterSpacing: '0.2em' }}>News</Eyebrow>
+            <Eyebrow style={{ fontSize: '0.6rem', letterSpacing: '0.04em', textTransform: 'none' }}>News</Eyebrow>
             <div style={{ flex: 1, height: 1, background: 'rgba(40,8,14,0.08)' }} />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
