@@ -54,20 +54,20 @@ export default function About() {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
+              <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                 Hi, I’m Sumin Lee, an undergraduate at{' '}
                 <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>
                 {' '}studying Civil, Urban & Environmental Engineering and{' '}
                 <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong>.
               </p>
-              <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
+              <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                 My research interests lie in{' '}
                 <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-computer interaction (HCI)</span>
                 {' '}and{' '}
                 <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-AI interaction (HAI)</span>.
                 {' '}I’m interested in designing interactions that support communication and collaboration between people and generative AI.
               </p>
-              <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
+              <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                 On the side, I’ve worked as an iOS developer, contributing to four released products reaching over 10,000 users.
               </p>
               <div style={{ display: 'flex', gap: '0.45rem', paddingTop: '0.25rem' }}>
@@ -98,20 +98,20 @@ export default function About() {
                 Sumin Lee
               </h1>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.88rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '1rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   Hi, I’m Sumin Lee, an undergraduate at{' '}
                   <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>
                   {' '}studying Civil, Urban & Environmental Engineering and{' '}
                   <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong>.
                 </p>
-                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.88rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '1rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   My research interests lie in{' '}
                   <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-computer interaction (HCI)</span>
                   {' '}and{' '}
                   <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-AI interaction (HAI)</span>.
                   {' '}I’m interested in designing interactions that support communication and collaboration between people and generative AI.
                 </p>
-                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.88rem', color: 'var(--muted)', lineHeight: 1.9, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '1rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   On the side, I’ve worked as an iOS developer, contributing to four released products reaching over 10,000 users.
                 </p>
                 <div style={{ display: 'flex', gap: '0.45rem', paddingTop: '0.1rem' }}>
