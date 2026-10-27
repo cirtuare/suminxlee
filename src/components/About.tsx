@@ -65,9 +65,9 @@ export default function About() {
               <ProfileLinks />
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
               <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
-                Hi! I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
+                Hi! I’m an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
                 <strong style={{ fontWeight: 700, color: 'rgba(40,8,14,0.72)', whiteSpace: 'nowrap' }}>Information Science & Culture</strong> at{' '}
                 <span style={{ fontWeight: 600, color: 'rgba(40,8,14,0.72)' }}>Seoul National University</span>.
               </p>
@@ -96,7 +96,7 @@ export default function About() {
               <ProfileLinks />
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <h1 style={{
                 fontFamily: 'var(--font)', fontWeight: 600,
                 fontSize: 'clamp(2.5rem,4vw,3.5rem)',
@@ -104,9 +104,9 @@ export default function About() {
               }}>
                 Sumin Lee
               </h1>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
                 <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.90625rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
-                  Hi! I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
+                  Hi! I’m an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
                   <strong style={{ fontWeight: 700, color: 'rgba(40,8,14,0.72)', whiteSpace: 'nowrap' }}>Information Science & Culture</strong> at{' '}
                   <span style={{ fontWeight: 600, color: 'rgba(40,8,14,0.72)' }}>Seoul National University</span>.
                 </p>
@@ -128,7 +128,7 @@ export default function About() {
         {/* ── News ── */}
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
-            <Eyebrow style={{ fontSize: '0.75rem', letterSpacing: '0.04em', textTransform: 'none' }}>News</Eyebrow>
+            <Eyebrow style={{ fontWeight: 600, fontSize: '0.75rem', letterSpacing: '0.04em', textTransform: 'none' }}>News</Eyebrow>
             <div style={{ flex: 1, height: 1, background: 'rgba(40,8,14,0.08)' }} />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
