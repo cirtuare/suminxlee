@@ -88,7 +88,7 @@ function PubRow({ p, isLast }: { p: Publication; isLast: boolean }) {
 export default function Publications() {
   const f = useFade();
   return (
-    <div className="page-enter page-pad" style={{ maxWidth: 1100, margin: '0 auto' }}>
+    <div className="page-enter page-pad">
       <div ref={f} className="fi">
         <div style={{ marginBottom: '2.5rem' }}>
           <h1 style={{ fontFamily: 'var(--font)', fontWeight: 500, fontSize: 'clamp(1.1rem,2vw,1.6rem)', letterSpacing: '-0.04em', color: 'rgba(40,8,14,0.72)', lineHeight: 1, margin: 0 }}>Publications</h1>

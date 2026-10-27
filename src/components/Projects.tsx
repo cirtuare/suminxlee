@@ -38,7 +38,7 @@ export default function Projects({ selected, onOpen, onClose }: Props) {
   if (selected) return <ProjectDetail project={selected} onBack={onClose} />;
 
   return (
-    <div className="page-enter page-pad" style={{ maxWidth: 1400, margin: '0 auto' }}>
+    <div className="page-enter page-pad">
       <div style={{ marginBottom: '2.5rem' }}>
         <h1 style={{ fontFamily: 'var(--font)', fontWeight: 500, fontSize: 'clamp(1.1rem,2vw,1.6rem)', letterSpacing: '-0.04em', color: 'rgba(40,8,14,0.72)', lineHeight: 1, margin: 0, marginBottom: '1.1rem' }}>Projects</h1>
         <div className="filter-row" style={{ display: 'flex', gap: '0.38rem', flexWrap: 'wrap', alignItems: 'center' }}>

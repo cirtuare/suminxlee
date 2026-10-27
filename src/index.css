@@ -124,6 +124,7 @@ canvas { display: block; }
 .pub-row { transition: background 0.2s, border-radius 0.2s; border-radius: 0.75rem; padding-left: 0.75rem; padding-right: 0.75rem; margin-left: -0.75rem; margin-right: -0.75rem; }
 .pub-row:hover { background: rgba(255, 255, 255, 0.52); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 
+.site-container { width: 100%; max-width: 1000px; margin-inline: auto; }
 .page-pad { padding: 4rem 2.5rem 6rem; }
 
 @media (max-width: 768px) {

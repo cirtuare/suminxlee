@@ -26,48 +26,52 @@ export default function Layout({ tab, setTab, children }: Props) {
       }} />
       <header className="glass" style={{
         position: 'sticky', top: 0, zIndex: 90,
-        display: 'flex', alignItems: 'center',
-        padding: mobile ? '0.85rem 1.25rem' : '1rem 2.5rem',
-        borderBottom: '1px solid rgba(40,8,14,0.07)', gap: '0.75rem',
+        borderBottom: '1px solid rgba(40,8,14,0.07)',
       }}>
-        <button onClick={() => setTab('about')} style={{
-          background: 'none', border: 'none', cursor: 'pointer',
-          padding: 0, flexShrink: 0, display: 'flex', alignItems: 'center',
+        <div className="site-container" style={{
+          display: 'flex', alignItems: 'center', gap: '0.75rem',
+          padding: mobile ? '0.85rem 1.25rem' : '1rem 2.5rem',
         }}>
-          <img src={withBase('/img/logo.png')} alt="Sumin Lee" style={{ height: 32, width: 'auto', display: 'block', marginTop: 3 }} />
-        </button>
-        <nav className="nav-tabs" style={{ marginLeft: 'auto' }}>
-          {TABS.map(t => (
-            <button key={t} onClick={() => setTab(t)} style={{
-              background: tab === t ? 'rgba(255,255,255,0.55)' : 'none',
-              backdropFilter: tab === t ? 'blur(16px)' : 'none',
-              WebkitBackdropFilter: tab === t ? 'blur(16px)' : 'none',
-              border: tab === t ? '1px solid rgba(255,255,255,0.9)' : '1px solid transparent',
-              boxShadow: tab === t ? '0 2px 12px rgba(40,8,14,0.08), inset 0 1px 0 rgba(255,255,255,1)' : 'none',
-              cursor: 'pointer',
-              fontFamily: 'var(--font)', fontWeight: tab === t ? 600 : 400,
-              fontSize: mobile ? '0.6rem' : '0.62rem',
-              letterSpacing: '0.12em', textTransform: 'uppercase',
-              color: tab === t ? 'var(--pink)' : 'var(--muted)',
-              padding: mobile ? '0.38rem 0.7rem' : '0.42rem 0.85rem',
-              borderRadius: '9999px',
-              transition: 'all 0.25s cubic-bezier(0.16,1,0.3,1)',
-              transform: tab === t ? 'scale(1.04)' : 'scale(1)',
-              whiteSpace: 'nowrap',
-            }}>
-              {t}
-            </button>
-          ))}
-        </nav>
+          <button onClick={() => setTab('about')} style={{
+            background: 'none', border: 'none', cursor: 'pointer',
+            padding: 0, flexShrink: 0, display: 'flex', alignItems: 'center',
+          }}>
+            <img src={withBase('/img/logo.png')} alt="Sumin Lee" style={{ height: 32, width: 'auto', display: 'block', marginTop: 3 }} />
+          </button>
+          <nav className="nav-tabs" style={{ marginLeft: 'auto' }}>
+            {TABS.map(t => (
+              <button key={t} onClick={() => setTab(t)} style={{
+                background: tab === t ? 'rgba(255,255,255,0.55)' : 'none',
+                backdropFilter: tab === t ? 'blur(16px)' : 'none',
+                WebkitBackdropFilter: tab === t ? 'blur(16px)' : 'none',
+                border: tab === t ? '1px solid rgba(255,255,255,0.9)' : '1px solid transparent',
+                boxShadow: tab === t ? '0 2px 12px rgba(40,8,14,0.08), inset 0 1px 0 rgba(255,255,255,1)' : 'none',
+                cursor: 'pointer',
+                fontFamily: 'var(--font)', fontWeight: tab === t ? 600 : 400,
+                fontSize: mobile ? '0.6rem' : '0.62rem',
+                letterSpacing: '0.12em', textTransform: 'uppercase',
+                color: tab === t ? 'var(--pink)' : 'var(--muted)',
+                padding: mobile ? '0.38rem 0.7rem' : '0.42rem 0.85rem',
+                borderRadius: '9999px',
+                transition: 'all 0.25s cubic-bezier(0.16,1,0.3,1)',
+                transform: tab === t ? 'scale(1.04)' : 'scale(1)',
+                whiteSpace: 'nowrap',
+              }}>
+                {t}
+              </button>
+            ))}
+          </nav>
+        </div>
       </header>
-      <main style={{ flex: 1 }}>{children}</main>
-      <footer className="footer-row" style={{
-        padding: mobile ? '1rem 1.25rem' : '1.1rem 2.5rem',
-        borderTop: '1px solid rgba(40,8,14,0.07)',
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-      }}>
-        <Eyebrow>© 2026 Sumin Lee</Eyebrow>
-        <Eyebrow style={{ textTransform: 'none' }}>cirtuare(at)snu.ac.kr</Eyebrow>
+      <main className="site-container" style={{ flex: 1 }}>{children}</main>
+      <footer style={{ borderTop: '1px solid rgba(40,8,14,0.07)' }}>
+        <div className="site-container footer-row" style={{
+          padding: mobile ? '1rem 1.25rem' : '1.1rem 2.5rem',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        }}>
+          <Eyebrow>© 2026 Sumin Lee</Eyebrow>
+          <Eyebrow style={{ textTransform: 'none' }}>cirtuare(at)snu.ac.kr</Eyebrow>
+        </div>
       </footer>
     </div>
   );

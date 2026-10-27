@@ -28,7 +28,6 @@ export default function About() {
 
       <div style={{
         position: 'relative', zIndex: 1,
-        maxWidth: 1100, margin: '0 auto',
         padding: mobile ? `2.5rem 1.5rem 3.5rem` : `3rem 2.5rem 4rem`,
         display: 'flex', flexDirection: 'column', gap: '2.5rem',
       }}>
