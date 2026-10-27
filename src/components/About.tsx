@@ -19,6 +19,18 @@ const NEWS = [
 
 const MASK = 'radial-gradient(ellipse 95% 95% at 50% 42%, black 72%, transparent 100%)';
 
+function ProfileLinks() {
+  return (
+    <div className="profile-links" style={{ display: 'flex', justifyContent: 'center', gap: '0.35rem' }}>
+      {SOCIAL.map(({ Icon, href, label }) => (
+        <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="soc-btn" title={label} aria-label={label} style={{ width: '2.25rem', height: '2.25rem' }}>
+          <Icon s={16} />
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export default function About() {
   const mobile = useIsMobile();
   const px = mobile ? '1.25rem' : '2.5rem';
@@ -33,7 +45,7 @@ export default function About() {
       }}>
 
         {mobile ? (
-          /* ── Mobile: Name → Photo (centered) → Bio ── */
+          /* ── Mobile: Name → Photo + Links (centered) → Bio ── */
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
             <h1 style={{
               fontFamily: 'var(--font)', fontWeight: 700,
@@ -43,13 +55,14 @@ export default function About() {
               Sumin Lee
             </h1>
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
               <div className="profile-photo" style={{
                 width: '62%', maxWidth: 210, aspectRatio: '4/5',
                 WebkitMaskImage: MASK, maskImage: MASK,
               }}>
                 <img src={withBase('/img/prof-pic-crop.jpg')} alt="Sumin Lee" />
               </div>
+              <ProfileLinks />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -69,23 +82,19 @@ export default function About() {
               <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                 On the side, I’ve worked as an iOS developer, contributing to four released products reaching over 10,000 users.
               </p>
-              <div style={{ display: 'flex', gap: '0.45rem', paddingTop: '0.25rem' }}>
-                {SOCIAL.map(({ Icon, href, label }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="soc-btn" title={label}>
-                    <Icon s={16} />
-                  </a>
-                ))}
-              </div>
             </div>
           </div>
         ) : (
-          /* ── Desktop: Photo left | Name + Bio right ── */
+          /* ── Desktop: Photo + Links left | Name + Bio right ── */
           <div style={{ display: 'flex', flexDirection: 'row', gap: '2.5rem', alignItems: 'flex-start' }}>
-            <div className="profile-photo" style={{
-              flexShrink: 0, width: 170, aspectRatio: '4/5',
-              WebkitMaskImage: MASK, maskImage: MASK,
-            }}>
-              <img src={withBase('/img/prof-pic-crop.jpg')} alt="Sumin Lee" />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', flexShrink: 0, width: 170 }}>
+              <div className="profile-photo" style={{
+                width: '100%', aspectRatio: '4/5',
+                WebkitMaskImage: MASK, maskImage: MASK,
+              }}>
+                <img src={withBase('/img/prof-pic-crop.jpg')} alt="Sumin Lee" />
+              </div>
+              <ProfileLinks />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -97,29 +106,22 @@ export default function About() {
                 Sumin Lee
               </h1>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '1rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   Hi, I’m Sumin Lee, an undergraduate at{' '}
                   <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>
                   {' '}studying Civil, Urban & Environmental Engineering and{' '}
                   <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong>.
                 </p>
-                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '1rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   My research interests lie in{' '}
                   <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-computer interaction (HCI)</span>
                   {' '}and{' '}
                   <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-AI interaction (HAI)</span>.
                   {' '}I’m interested in designing interactions that support communication and collaboration between people and generative AI.
                 </p>
-                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '1rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   On the side, I’ve worked as an iOS developer, contributing to four released products reaching over 10,000 users.
                 </p>
-                <div style={{ display: 'flex', gap: '0.45rem', paddingTop: '0.1rem' }}>
-                  {SOCIAL.map(({ Icon, href, label }) => (
-                    <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="soc-btn" title={label}>
-                      <Icon s={17} />
-                    </a>
-                  ))}
-                </div>
               </div>
             </div>
           </div>
