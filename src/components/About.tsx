@@ -67,9 +67,9 @@ export default function About() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
-                I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
-                <strong style={{ fontWeight: 700, whiteSpace: 'nowrap' }}>Information Science & Culture</strong> at{' '}
-                <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
+                Hi! I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
+                <strong style={{ fontWeight: 700, color: 'rgba(40,8,14,0.72)', whiteSpace: 'nowrap' }}>Information Science & Culture</strong> at{' '}
+                <span style={{ fontWeight: 600, color: 'rgba(40,8,14,0.72)' }}>Seoul National University</span>.
               </p>
               <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                 My research interests lie in{' '}
@@ -106,9 +106,9 @@ export default function About() {
               </h1>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.90625rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
-                  I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
-                  <strong style={{ fontWeight: 700, whiteSpace: 'nowrap' }}>Information Science & Culture</strong> at{' '}
-                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
+                  Hi! I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
+                  <strong style={{ fontWeight: 700, color: 'rgba(40,8,14,0.72)', whiteSpace: 'nowrap' }}>Information Science & Culture</strong> at{' '}
+                  <span style={{ fontWeight: 600, color: 'rgba(40,8,14,0.72)' }}>Seoul National University</span>.
                 </p>
                 <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.90625rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   My research interests lie in{' '}
