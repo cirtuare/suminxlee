@@ -67,7 +67,7 @@ export default function Layout({ tab, setTab, children }: Props) {
         <div className="site-container footer-row" style={{
           padding: mobile ? '1rem 1.25rem' : '1.1rem 2.5rem',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.4rem 1rem',
-          fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.75rem', lineHeight: 1.5, color: 'var(--muted)',
+          fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.75rem', lineHeight: 1.5, color: 'rgba(40,8,14,0.4)',
         }}>
           <span>cirtuare(at)snu.ac.kr</span>
           <span style={{ marginLeft: 'auto', textAlign: 'right', whiteSpace: 'nowrap' }}>

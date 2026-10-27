@@ -68,14 +68,14 @@ export default function About() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                 I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
-                <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong> at{' '}
+                <strong style={{ fontWeight: 700, whiteSpace: 'nowrap' }}>Information Science & Culture</strong> at{' '}
                 <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
               </p>
               <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                 My research interests lie in{' '}
-                <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-computer interaction (HCI)</span>
+                <span style={{ fontWeight: 600, color: 'rgba(40,8,14,0.72)' }}>human-computer interaction (HCI)</span>
                 {' '}and{' '}
-                <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-AI interaction (HAI)</span>.
+                <span style={{ fontWeight: 600, color: 'rgba(40,8,14,0.72)' }}>human-AI interaction (HAI)</span>.
                 {' '}I’m interested in designing interactions that support communication and collaboration between people and generative AI.
               </p>
               <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
@@ -107,14 +107,14 @@ export default function About() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.90625rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   I am an undergraduate student in Civil, Urban & Environmental Engineering and{' '}
-                  <strong style={{ fontWeight: 700 }}>Information Science & Culture</strong> at{' '}
+                  <strong style={{ fontWeight: 700, whiteSpace: 'nowrap' }}>Information Science & Culture</strong> at{' '}
                   <span style={{ fontWeight: 600, color: 'var(--text)' }}>Seoul National University</span>.
                 </p>
                 <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.90625rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
                   My research interests lie in{' '}
-                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-computer interaction (HCI)</span>
+                  <span style={{ fontWeight: 600, color: 'rgba(40,8,14,0.72)' }}>human-computer interaction (HCI)</span>
                   {' '}and{' '}
-                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>human-AI interaction (HAI)</span>.
+                  <span style={{ fontWeight: 600, color: 'rgba(40,8,14,0.72)' }}>human-AI interaction (HAI)</span>.
                   {' '}I’m interested in designing interactions that support communication and collaboration between people and generative AI.
                 </p>
                 <p style={{ fontFamily: 'var(--font)', fontWeight: 400, fontSize: '0.90625rem', color: 'var(--muted)', lineHeight: 1.75, margin: 0 }}>
