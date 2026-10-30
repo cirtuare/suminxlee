@@ -13,7 +13,7 @@ const SOCIAL = [
 const NEWS = [
   { date: 'Jul 2026', text: 'Joined KIXLAB, advised by Prof. Juho Kim.' },
   { date: 'May 2026', text: 'Opened my personal website!' },
-  { date: 'Mar 2026', text: 'Selected for SNU’s Undergraduate Research Grant (Independent Research).' },
+  { date: 'May 2026', text: 'Selected for SNU’s Undergraduate Research Grant (Independent Research).' },
   { date: 'Feb 2026', text: 'Joined the SNU IMSI Lab, advised by Prof. Nam-joon Kim.' },
   { date: 'Jan 2026', text: 'Presented a poster at HCI Korea 2026.' },
 ];
@@ -134,7 +134,7 @@ export default function About() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {NEWS.map(({ date, text }, i) => (
-              <div key={date} style={{
+              <div key={`${date}-${text}`} style={{
                 display: 'flex', gap: '1rem', alignItems: 'baseline',
                 padding: '0.5rem 0',
                 borderBottom: i < NEWS.length - 1 ? '1px solid rgba(40,8,14,0.06)' : 'none',
