@@ -13,6 +13,7 @@ const SOCIAL = [
 const NEWS = [
   { date: 'Jul 2026', text: 'Joined KIXLAB, advised by Prof. Juho Kim.' },
   { date: 'May 2026', text: 'Opened my personal website!' },
+  { date: 'Mar 2026', text: 'Selected for SNU’s Undergraduate Research Grant (Independent Research).' },
   { date: 'Feb 2026', text: 'Joined the SNU IMSI Lab, advised by Prof. Nam-joon Kim.' },
   { date: 'Jan 2026', text: 'Presented a poster at HCI Korea 2026.' },
 ];
