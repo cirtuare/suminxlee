@@ -218,7 +218,7 @@ export default function CV() {
               left={
                 <>
                   <div style={T.title}>IMSI LAB, SNU</div>
-                  <div style={T.italic}>Research Intern (Advisor: Prof. Nam-Joon Kim)</div>
+                  <div style={T.italic}>Undergraduate Research Intern (Advisor: Prof. Nam-Joon Kim)</div>
                   <Bullets items={[
                     'Led dataset curation, aggregating 10 dental datasets into a single standardized benchmark with visualization pipeline',
                     'Conducted ablation studies training deep learning models across multiple ongoing medical imaging projects',
