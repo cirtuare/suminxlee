@@ -73,6 +73,19 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
 .toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:rgba(61,50,46,.84);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;padding:10px 16px;border-radius:999px;font-size:14.5px;z-index:9}
 [hidden]{display:none!important}
 
+/* place popup: name, rating, photo (hover on desktop, tap on phones) */
+.pop{width:236px;padding:10px 10px 12px;border-radius:20px;z-index:6;pointer-events:none;transform:translate(-50%,0)}
+.photo{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#f6d9cc,#cfe3c8)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:12.5px;font-weight:600;color:rgba(61,50,46,.6)}
+.photo .ph svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.pop.nophoto .photo{display:none}
+.pop h3{margin:9px 4px 0;font-size:15.5px;line-height:1.3;letter-spacing:-.3px}
+.rate{margin:3px 4px 0;font-size:13.5px;font-weight:700;color:#b4503f}.rate.none{color:var(--mute);font-weight:500}
+.attr{margin:7px 4px 0;display:flex;flex-wrap:wrap;gap:5px}
+.attr span{background:rgba(255,255,255,.6);border-radius:999px;padding:2px 9px;font-size:12px;font-weight:600}
+.now{margin:8px 4px 0;font-size:13px;font-weight:700;color:var(--ink)}.now.has{color:#b4503f}
+
 @media (max-width:1180px){#card{top:84px}}
 @media (max-width:760px){
   #pill{top:10px;max-width:calc(100% - 20px);padding:7px 14px;gap:4px 10px;flex-wrap:wrap;justify-content:center;border-radius:22px}
@@ -92,6 +105,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
   #slider{order:3;flex-basis:100%}.speeds{margin-left:auto;gap:4px}.btn.sm{padding:6px 10px;min-width:42px}.speeds button[data-speed="1"]{display:none}
   .chips .btn.sm{min-width:48px}
   .bubble{font-size:15px;max-width:240px;padding:10px 12px}
+  .pop{width:204px}
   .toast{bottom:156px}
 }
 @media (prefers-reduced-motion:reduce){.hint{animation:none}#side,.tab,.tab svg{transition:none}}

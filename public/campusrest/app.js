@@ -17,13 +17,15 @@ let M, D, MAN, W = 0, H = 0, dpr = 1, fitZ = 1, HM, bgImg, haloImg, study = null
 const SP = {}, bld = {}, plc = {}; let agents = [];
 const F = { years: new Set(), min: [] };  // left-panel filter: years shown, lowest preference score shown per item
 const pass = a => F.years.has(a.y) && (D.prefs || []).every((_, k) => !(F.min[k] > 0) || (a.p && a.p[k] >= F.min[k]));
-const S = { t: 0, playing: !reduced, speed: 3, sel: null, follow: false, hover: null, n: null };
+let placeHits = [], EX = {};  // EX: optional data/place_extras.json { "R001": { rating: 4.2, n: 12, photo: "assets/places/R001.jpg" } }
+const S = { hp: null, pp: null, t: 0, playing: !reduced, speed: 3, sel: null, follow: false, hover: null, n: null };
 const cam = { x: 1000, y: 560, z: .7 }, tgt = { x: 1000, y: 560, z: .7 };
 let cur = [], hits = [], lastPos = null, ins = { t: 0, b: 0, l: 0, r: 0 }, last = performance.now(), lastUi = 0;
 
 const J = u => fetch(u).then(r => { if (!r.ok) throw new Error(u); return r.json(); });
 const IMG = src => new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error(src)); i.src = src; });
-Promise.all([J('data/map.json'), J('data/agents.json'), J('assets/sprites/manifest.json')]).then(async ([m, d, man]) => {
+Promise.all([J('data/map.json'), J('data/agents.json'), J('assets/sprites/manifest.json'), J('data/place_extras.json').catch(() => ({}))]).then(async ([m, d, man, ex]) => {
+  EX = ex || {};
   const jobs = [IMG(m.iso.src).then(i => bgImg = i), IMG('assets/sprites/halo.png').then(i => haloImg = i)];
   for (const pose of Object.keys(man.poses)) for (let v = 0; v < man.variants.length; v++) jobs.push(IMG(`assets/sprites/${pose}_${v}.png`).then(i => { (SP[pose] = SP[pose] || [])[v] = i; }));
   await Promise.all(jobs); init(m, d, man);
@@ -155,7 +157,7 @@ function draw() {
   // counts
   const inCls = {}, atPlace = {}; let nR = 0, nW = 0, nC = 0;
   for (const c of cur) { if (!c) continue; if (c.mode === 'c') { nC++; inCls[c.bd] = (inCls[c.bd] || 0) + 1; } else if (c.mode === 's') { nR++; atPlace[c.s.pl] = (atPlace[c.s.pl] || 0) + 1; } else nW++; }
-  S.n = { rest: nR, walk: nW, cls: nC };
+  S.n = { rest: nR, walk: nW, cls: nC }; S.at = atPlace; placeHits = [];
   const rel = Math.pow(z / fitZ, .5);
   // building labels (class buildings; all of them when zoomed in)
   g.textAlign = 'center'; g.textBaseline = 'middle';
@@ -179,10 +181,11 @@ function draw() {
       g.fillStyle = p.shade ? '#6aab82' : '#dcaa74'; g.strokeStyle = 'rgba(255,255,255,.75)'; g.lineWidth = 1; rr(g, q[0] - 6 * m, q[1] - 2.6 * m, 12 * m, 5 * m, 2 * m); g.fill(); g.stroke();
       if (p.table) { g.fillStyle = '#f5d48e'; rr(g, q[0] - 2.4 * m, q[1] - 6 * m, 4.8 * m, 3 * m, m); g.fill(); g.stroke(); }
     } else { const R = clamp(7.5 * m, 10, 22); g.fillStyle = 'rgba(60,40,30,.16)'; g.beginPath(); g.arc(q[0], q[1] + R * .16, R, 0, 7); g.fill(); g.fillStyle = '#8c7fb8'; g.beginPath(); g.arc(q[0], q[1], R, 0, 7); g.fill(); g.lineWidth = 1.5; g.strokeStyle = 'rgba(255,255,255,.85)'; g.stroke(); icon(g, p.kind, q[0], q[1], R * 1.35); }
-    if (n >= 2 || (z > fitZ * 2.6 && Math.hypot(q[0] - cx(), q[1] - cy()) < Math.min(W, H) * .5)) {
-      const lb = z > fitZ * 2.6 ? p.name + (n ? ` · ${n}명` : '') : n + '명', fs = clamp(11 * rel, 11, 17);
-      g.font = `800 ${fs}px sans-serif`; g.lineWidth = 4; g.lineJoin = 'round'; g.strokeStyle = 'rgba(255,253,246,.94)'; g.fillStyle = n ? '#c4503f' : '#6b5a4a';
-      const ly = q[1] + (p.kind === 'outdoor_rest' ? 12 + 5 * m : clamp(7.5 * m, 10, 22) + 11); g.strokeText(lb, q[0], ly); g.fillText(lb, q[0], ly);
+    placeHits.push({ id: p.id, x: q[0], y: q[1], r: Math.max(14, 7.5 * m) });
+    if (p.id === (S.hp || S.pp)) { g.strokeStyle = 'rgba(217,120,106,.95)'; g.lineWidth = 2.5; g.beginPath(); g.arc(q[0], q[1], p.kind === 'outdoor_rest' ? 9 * m + 4 : clamp(7.5 * m, 10, 22) + 4, 0, 7); g.stroke(); }
+    if (n >= 2 || (n && z > fitZ * 1.6)) {  // names live in the hover popup; the map only shows how many are resting here
+      const fs = clamp(11 * rel, 11, 17), ly = q[1] + (p.kind === 'outdoor_rest' ? 12 + 5 * m : clamp(7.5 * m, 10, 22) + 11);
+      g.font = `800 ${fs}px sans-serif`; g.lineWidth = 4; g.lineJoin = 'round'; g.strokeStyle = 'rgba(255,253,246,.94)'; g.fillStyle = '#c4503f'; g.strokeText(n + '명', q[0], ly); g.fillText(n + '명', q[0], ly);
     }
   }
   // agents (far to near by image y; the selected one on top)
@@ -207,7 +210,7 @@ function frame(ts) {
   if (S.sel != null) { const c = cur[S.sel]; if (c) lastPos = c; if (S.follow && lastPos) { tgt.x = lastPos.u; tgt.y = lastPos.v; } }
   const k = 1 - Math.exp(-dt * 5.5);
   cam.x += (tgt.x - cam.x) * k; cam.y += (tgt.y - cam.y) * k; cam.z *= Math.pow(tgt.z / cam.z, k);
-  draw(); updateBubble();
+  draw(); updateBubble(); updatePop();
   if (ts - lastUi > 120 || S.sel != null) { lastUi = ts; ui(); }
   requestAnimationFrame(frame);
 }
@@ -251,6 +254,25 @@ function updateBubble() {
   const bw = b.offsetWidth, L = clamp(q[0], bw / 2 + 10, W - bw / 2 - 10), hb = $('pill').getBoundingClientRect().bottom + 8;
   b.style.left = L + 'px'; b.style.top = Math.max(b.offsetHeight + 12 + hb, q[1] - size * 1.2 - 12) + 'px'; b.style.setProperty('--tx', (q[0] - L) + 'px');
 }
+const KIND = { restaurants: '식당', cafes: '카페', convenience: '편의점', outdoor_rest: '야외 휴게공간' };
+function updatePop() {
+  const id = S.hp || S.pp, p = id && plc[id], el = $('pop');
+  if (!p) { el.hidden = true; el.dataset.id = ''; return; }
+  const out = p.kind === 'outdoor_rest', ex = EX[p.id] || {};
+  if (el.dataset.id !== p.id) {  // static parts, rebuilt when the place changes
+    el.dataset.id = p.id; el.classList.toggle('nophoto', !out); $('popName').textContent = p.name;
+    const img = $('popImg'); img.hidden = !ex.photo; if (ex.photo) img.src = ex.photo; img.alt = p.name; $('popPhoto').querySelector('.ph').hidden = !!ex.photo;
+    const rate = $('popRate'); rate.hidden = !out; rate.className = 'rate' + (ex.rating == null ? ' none' : '');
+    rate.textContent = ex.rating == null ? '★ 평점 준비 중' : `★ ${(+ex.rating).toFixed(1)}` + (ex.n ? ` (${ex.n}명)` : '');
+    const at = $('popAttr'); at.textContent = '';
+    (out ? [p.seat, p.shade ? '그늘 있음' : '그늘 없음', p.table ? '테이블 있음' : '', p.cap ? `수용 ${p.cap}명` : ''] : [KIND[p.kind]]).filter(Boolean).forEach(t => at.append(mk('span', null, t)));
+  }
+  const n = (S.at && S.at[p.id]) || 0, now = $('popNow'); now.textContent = out || n ? (n ? `지금 ${n}명이 쉬는 중` : '지금은 비어 있어요') : ''; now.className = 'now' + (n ? ' has' : '');
+  el.hidden = false;
+  const q = w2s(p.u, p.v), w = el.offsetWidth, h = el.offsetHeight, top = q[1] - h - 20, minTop = $('pill').getBoundingClientRect().bottom + 8;
+  el.style.left = clamp(q[0], w / 2 + 8, W - w / 2 - 8) + 'px'; el.style.top = (top < minTop ? q[1] + 22 : top) + 'px';
+}
+function pickPlace(px, py) { let best = null, bd = 1e9; for (const h of placeHits) { const d = Math.hypot(px - h.x, py - h.y); if (d < h.r && d < bd) { bd = d; best = h.id; } } return best; }
 function pick(px, py) { let best = null, bd = 1e9; for (const h of hits) { const d = Math.hypot(px - h.x, py - h.y); if (d < h.r && d < bd) { bd = d; best = h.i; } } return best; }
 const clampTarget = () => { tgt.x = clamp(tgt.x, 0, M.iso.w); tgt.y = clamp(tgt.y, 0, M.iso.h); };
 
@@ -264,13 +286,14 @@ function bind() {
   $('sideTab').onclick = () => { syncSide($('side').classList.contains('closed')); relayout(); };
   $('btnNext').onclick = () => { const a = agents[S.sel], n = a.g.find(s => (s.k === 'w' || s.k === 's') && s.a > S.t + .02); if (!n) { toast('오늘 이 학생의 이동은 여기까지예요'); return; } S.t = n.a + (n.k === 'w' ? .05 : 0); S.follow = true; };
   $('btnRandom').onclick = () => { const v = cur.filter(c => c && c.mode !== 'c'); if (!v.length) { S.t = 12 * 60 + 5; toast('북적이는 점심 시간으로 이동했어요'); return; } select(v[Math.floor(Math.random() * v.length)].a.i); };
-  addEventListener('keydown', e => { if (e.key === 'Escape') deselect(); if (e.key === ' ' && !/BUTTON|INPUT|SUMMARY/.test(document.activeElement.tagName)) { e.preventDefault(); $('btnPlay').click(); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { S.pp = null; deselect(); } if (e.key === ' ' && !/BUTTON|INPUT|SUMMARY/.test(document.activeElement.tagName)) { e.preventDefault(); $('btnPlay').click(); } });
   // pointer: drag to pan, wheel / pinch to zoom, tap to pick
   const ptr = new Map(); let moved = 0;
   cv.addEventListener('pointerdown', e => { cv.setPointerCapture(e.pointerId); ptr.set(e.pointerId, [e.clientX, e.clientY]); moved = 0; });
   cv.addEventListener('pointermove', e => {
     const p = ptr.get(e.pointerId);
-    if (!p) { const i = pick(e.clientX, e.clientY); if (i !== S.hover) { S.hover = i; cv.classList.toggle('hover', i != null); } return; }
+    if (!p) { const i = pick(e.clientX, e.clientY), pl = i == null ? pickPlace(e.clientX, e.clientY) : null; S.hover = i; S.hp = pl; cv.classList.toggle('hover', i != null || pl != null); return; }
+    
     if (ptr.size === 2) {
       const [a, b] = [...ptr.values()]; ptr.set(e.pointerId, [e.clientX, e.clientY]); const [a2, b2] = [...ptr.values()], d = Math.hypot(a2[0] - b2[0], a2[1] - b2[1]), d0 = Math.hypot(a[0] - b[0], a[1] - b[1]);
       if (d0 > 0) { tgt.z = clamp(tgt.z * d / d0, fitZ * .6, 3.2); cam.z = tgt.z; } moved = 99; return;
@@ -278,7 +301,8 @@ function bind() {
     const dx = e.clientX - p[0], dy = e.clientY - p[1]; ptr.set(e.pointerId, [e.clientX, e.clientY]); moved += Math.abs(dx) + Math.abs(dy);
     if (moved > 6) { S.follow = false; tgt.x -= dx / cam.z; tgt.y -= dy / cam.z; clampTarget(); cam.x = tgt.x; cam.y = tgt.y; }
   });
-  cv.addEventListener('pointerup', e => { const had = ptr.has(e.pointerId); ptr.delete(e.pointerId); if (had && moved <= 6 && ptr.size === 0) { const i = pick(e.clientX, e.clientY); if (i != null) select(i); else if (S.sel != null) deselect(); } });
+  cv.addEventListener('pointerup', e => { const had = ptr.has(e.pointerId); ptr.delete(e.pointerId); if (had && moved <= 6 && ptr.size === 0) { const i = pick(e.clientX, e.clientY); if (i != null) select(i); else { const pl = pickPlace(e.clientX, e.clientY); if (pl) S.pp = S.pp === pl ? null : pl; else { S.pp = null; if (S.sel != null) deselect(); } } } });
+  cv.addEventListener('pointerleave', () => { S.hover = S.hp = null; cv.classList.remove('hover'); });
   cv.addEventListener('pointercancel', e => ptr.delete(e.pointerId));
   cv.addEventListener('wheel', e => {
     e.preventDefault(); const z = clamp(tgt.z * Math.exp(-e.deltaY * .0015), fitZ * .6, 3.2);
@@ -287,5 +311,5 @@ function bind() {
   }, { passive: false });
 }
 
-window.__campus = { S, cam, tgt, get agents() { return agents; }, select, deselect, setTime: t => { S.t = t; }, get cur() { return cur; }, get hits() { return hits; }, get D() { return D; }, get M() { return M; } };
+window.__campus = { S, cam, tgt, get agents() { return agents; }, select, deselect, setTime: t => { S.t = t; }, get cur() { return cur; }, get hits() { return hits; }, get placeHits() { return placeHits; }, get D() { return D; }, get M() { return M; } };
 })();
