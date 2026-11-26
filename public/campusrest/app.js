@@ -17,7 +17,7 @@ let M, D, MAN, W = 0, H = 0, dpr = 1, fitZ = 1, HM, bgImg, haloImg, study = null
 const SP = {}, bld = {}, plc = {}; let agents = [];
 const F = { years: new Set(), min: [] };  // left-panel filter: years shown, lowest preference score shown per item
 const pass = a => F.years.has(a.y) && (D.prefs || []).every((_, k) => !(F.min[k] > 0) || (a.p && a.p[k] >= F.min[k]));
-let placeHits = [], EX = {};  // EX: optional data/place_extras.json { "R001": { rating: 4.2, n: 12, photo: "assets/places/R001.jpg" } }
+let placeHits = [], EX = {};  // EX: optional data/place_extras.json { "R001": { photo: "assets/places/R001.jpg" } }
 const S = { hp: null, pp: null, t: 0, playing: !reduced, speed: 3, sel: null, follow: false, hover: null, n: null };
 const cam = { x: 1000, y: 560, z: .7 }, tgt = { x: 1000, y: 560, z: .7 };
 let cur = [], hits = [], lastPos = null, ins = { t: 0, b: 0, l: 0, r: 0 }, last = performance.now(), lastUi = 0;
@@ -262,10 +262,9 @@ function updatePop() {
   if (el.dataset.id !== p.id) {  // static parts, rebuilt when the place changes
     el.dataset.id = p.id; el.classList.toggle('nophoto', !out); $('popName').textContent = p.name;
     const img = $('popImg'); img.hidden = !ex.photo; if (ex.photo) img.src = ex.photo; img.alt = p.name; $('popPhoto').querySelector('.ph').hidden = !!ex.photo;
-    const rate = $('popRate'); rate.hidden = !out; rate.className = 'rate' + (ex.rating == null ? ' none' : '');
-    rate.textContent = ex.rating == null ? '★ 평점 준비 중' : `★ ${(+ex.rating).toFixed(1)}` + (ex.n ? ` (${ex.n}명)` : '');
-    const at = $('popAttr'); at.textContent = '';
-    (out ? [p.seat, p.shade ? '그늘 있음' : '그늘 없음', p.table ? '테이블 있음' : '', p.cap ? `수용 ${p.cap}명` : ''] : [KIND[p.kind]]).filter(Boolean).forEach(t => at.append(mk('span', null, t)));
+    const kv = $('popKV'); kv.textContent = ''; const yn = v => v ? '있음' : '없음';
+    (out ? [['위치', `${p.lat.toFixed(5)}°N, ${p.lon.toFixed(5)}°E`], ['그늘', `인공 그늘 ${yn(p.art)} · 자연 그늘 ${yn(p.nat)}`], ['좌석', p.seat || '정보 없음'], ['테이블', yn(p.table)], ['수용 인원', p.cap ? `${p.cap}명` : '정보 없음']] : [['종류', KIND[p.kind]]])
+      .forEach(([k, v]) => kv.append(mk('dt', null, k), mk('dd', null, v)));
   }
   const n = (S.at && S.at[p.id]) || 0, now = $('popNow'); now.textContent = out || n ? (n ? `지금 ${n}명이 쉬는 중` : '지금은 비어 있어요') : ''; now.className = 'now' + (n ? ' has' : '');
   el.hidden = false;
