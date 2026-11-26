@@ -263,7 +263,7 @@ function updatePop() {
     el.dataset.id = p.id; el.classList.toggle('nophoto', !out); $('popName').textContent = p.name;
     const img = $('popImg'); img.hidden = !ex.photo; if (ex.photo) img.src = ex.photo; img.alt = p.name; $('popPhoto').querySelector('.ph').hidden = !!ex.photo;
     const kv = $('popKV'); kv.textContent = ''; const yn = v => v ? '있음' : '없음';
-    (out ? [['위치', `${p.lat.toFixed(5)}°N, ${p.lon.toFixed(5)}°E`], ['그늘', `인공 그늘 ${yn(p.art)} · 자연 그늘 ${yn(p.nat)}`], ['좌석', p.seat || '정보 없음'], ['테이블', yn(p.table)], ['수용 인원', p.cap ? `${p.cap}명` : '정보 없음']] : [['종류', KIND[p.kind]]])
+    (out ? [['그늘', `인공 그늘 ${yn(p.art)} · 자연 그늘 ${yn(p.nat)}`], ['좌석', p.seat || '정보 없음'], ['테이블', yn(p.table)], ['수용 인원', p.cap ? `${p.cap}명` : '정보 없음']] : [['종류', KIND[p.kind]]])
       .forEach(([k, v]) => kv.append(mk('dt', null, k), mk('dd', null, v)));
   }
   const n = (S.at && S.at[p.id]) || 0, now = $('popNow'); now.textContent = out || n ? (n ? `지금 ${n}명이 쉬는 중` : '지금은 비어 있어요') : ''; now.className = 'now' + (n ? ' has' : '');
