@@ -6,6 +6,7 @@
 'use strict';
 const $ = id => document.getElementById(id);
 const cv = $('map'), ctx = cv.getContext('2d');
+const FF = '"Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif';   // canvas text: same family as the page (self-hosted in assets/fonts)
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 const hhmm = t => { const m = Math.floor(t); return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
 const hash = n => { let h = (n + 1) * 2654435761 >>> 0; h ^= h >>> 15; return (h * 2246822519) >>> 0; };
@@ -28,6 +29,8 @@ Promise.all([J('data/map.json'), J('data/agents.json'), J('assets/sprites/manife
   EX = ex || {};
   const jobs = [IMG(m.iso.src).then(i => bgImg = i), IMG('assets/sprites/halo.png').then(i => haloImg = i)];
   for (const pose of Object.keys(man.poses)) for (let v = 0; v < man.variants.length; v++) jobs.push(IMG(`assets/sprites/${pose}_${v}.png`).then(i => { (SP[pose] = SP[pose] || [])[v] = i; }));
+  const glyphs = '0123456789동명z' + m.buildings.map(b => b.label || b.id + '동').join('') + d.agents.map(a => a.n).join('');
+  jobs.push(Promise.race([document.fonts.load('800 16px "Pretendard Variable"', glyphs), new Promise(r => setTimeout(r, 1500))]).catch(() => {}));   // canvas does not wait for webfont chunks
   await Promise.all(jobs); init(m, d, man);
 }).catch(() => { $('hint').textContent = '데이터를 불러오지 못했어요. web 폴더에서 python3 -m http.server 로 열어 주세요.'; });
 
@@ -165,11 +168,11 @@ function draw() {
     if (!bd.cls && z < fitZ * 2.2) continue;
     const q = w2s(bd.u, bd.v - LIFT); if (q[0] < -60 || q[0] > W + 60 || q[1] < -40 || q[1] > H + 40) continue;
     if (!bd.cls && Math.hypot(q[0] - cx(), q[1] - cy()) > Math.min(W, H) * .42) continue;
-    const fs = clamp(12 * rel, 11, 20), n = inCls[bd.id], label = bd.label || bd.id + '동';
-    g.font = `800 ${fs}px sans-serif`; const tw = g.measureText(label).width + fs * .9;
+    const fs = clamp(10.5 * rel, 10, 16), n = inCls[bd.id], label = bd.label || bd.id + '동';
+    g.font = `800 ${fs}px ${FF}`; const tw = g.measureText(label).width + fs * .9;
     g.fillStyle = 'rgba(255,255,255,.7)'; rr(g, q[0] - tw / 2, q[1] - fs * .75, tw, fs * 1.5, fs * .75); g.fill();
     g.fillStyle = bd.cls ? '#34507f' : '#7d705d'; g.fillText(label, q[0], q[1] + 1);
-    if (n) { const r = clamp(fs * .62, 8, 13); g.fillStyle = '#5f86bb'; g.beginPath(); g.arc(q[0] + tw / 2, q[1] - fs * .75, r, 0, 7); g.fill(); g.fillStyle = '#fff'; g.font = `800 ${r * 1.05}px sans-serif`; g.fillText(n, q[0] + tw / 2, q[1] - fs * .75 + 1); }
+    if (n) { const r = clamp(fs * .62, 8, 13); g.fillStyle = '#5f86bb'; g.beginPath(); g.arc(q[0] + tw / 2, q[1] - fs * .75, r, 0, 7); g.fill(); g.fillStyle = '#fff'; g.font = `800 ${r * 1.05}px ${FF}`; g.fillText(n, q[0] + tw / 2, q[1] - fs * .75 + 1); }
   }
   // places: crowd glow + marker
   for (const p of M.places) {
@@ -184,8 +187,8 @@ function draw() {
     placeHits.push({ id: p.id, x: q[0], y: q[1], r: Math.max(14, 7.5 * m) });
     if (p.id === (S.hp || S.pp)) { g.strokeStyle = 'rgba(217,120,106,.95)'; g.lineWidth = 2.5; g.beginPath(); g.arc(q[0], q[1], p.kind === 'outdoor_rest' ? 9 * m + 4 : clamp(7.5 * m, 10, 22) + 4, 0, 7); g.stroke(); }
     if (n >= 2 || (n && z > fitZ * 1.6)) {  // names live in the hover popup; the map only shows how many are resting here
-      const fs = clamp(11 * rel, 11, 17), ly = q[1] + (p.kind === 'outdoor_rest' ? 12 + 5 * m : clamp(7.5 * m, 10, 22) + 11);
-      g.font = `800 ${fs}px sans-serif`; g.lineWidth = 4; g.lineJoin = 'round'; g.strokeStyle = 'rgba(255,253,246,.94)'; g.fillStyle = '#c4503f'; g.strokeText(n + '명', q[0], ly); g.fillText(n + '명', q[0], ly);
+      const fs = clamp(10 * rel, 10, 14), ly = q[1] + (p.kind === 'outdoor_rest' ? 12 + 5 * m : clamp(7.5 * m, 10, 22) + 11);
+      g.font = `800 ${fs}px ${FF}`; g.lineWidth = 4; g.lineJoin = 'round'; g.strokeStyle = 'rgba(255,253,246,.94)'; g.fillStyle = '#c4503f'; g.strokeText(n + '명', q[0], ly); g.fillText(n + '명', q[0], ly);
     }
   }
   // agents (far to near by image y; the selected one on top)
@@ -195,9 +198,9 @@ function draw() {
   for (const c of vis) {
     const q = w2s(c.u, c.v), sel = c.a.i === S.sel, sz = sel ? size * 1.3 : size; if (q[0] < -80 || q[0] > W + 80 || q[1] < -40 || q[1] > H + 160) continue;
     const [pose, bob] = poseOf(c, tReal); drawAgent(g, q[0], q[1], sz, c.a, pose, bob, c.du < 0 ? -1 : 1, sel, c.mode === 'c' ? .8 : 1);
-    if (c.mode === 's' && pose === 'sit') { const kk = ((tReal / .7 + c.a.h % 5) % 2) / 2; g.globalAlpha = 1 - kk; g.fillStyle = 'rgba(217,120,106,.95)'; g.font = `800 ${sz * .3}px sans-serif`; g.fillText('z', q[0] + sz * .34 + kk * 4, q[1] - sz * .8 - kk * sz * .4); g.globalAlpha = 1; }
+    if (c.mode === 's' && pose === 'sit') { const kk = ((tReal / .7 + c.a.h % 5) % 2) / 2; g.globalAlpha = 1 - kk; g.fillStyle = 'rgba(217,120,106,.95)'; g.font = `800 ${sz * .3}px ${FF}`; g.fillText('z', q[0] + sz * .34 + kk * 4, q[1] - sz * .8 - kk * sz * .4); g.globalAlpha = 1; }
     if (c.mode !== 'c') hits.push({ i: c.a.i, x: q[0], y: q[1] - sz * .5, r: Math.max(15, sz * .42), top: q[1] - sz * 1.05 });
-    if (S.hover === c.a.i && !sel) { g.font = '700 13px sans-serif'; const tw = g.measureText(c.a.n).width + 16; g.fillStyle = 'rgba(255,255,255,.82)'; rr(g, q[0] - tw / 2, q[1] - sz * 1.2 - 22, tw, 24, 12); g.fill(); g.fillStyle = '#3d322e'; g.fillText(c.a.n, q[0], q[1] - sz * 1.2 - 9); }
+    if (S.hover === c.a.i && !sel) { g.font = '700 13px ' + FF; const tw = g.measureText(c.a.n).width + 16; g.fillStyle = 'rgba(255,255,255,.82)'; rr(g, q[0] - tw / 2, q[1] - sz * 1.2 - 22, tw, 24, 12); g.fill(); g.fillStyle = '#3d322e'; g.fillText(c.a.n, q[0], q[1] - sz * 1.2 - 9); }
   }
   const tint = clamp((S.t - 1020) / 150, 0, 1) * .14; if (tint) { g.fillStyle = `rgba(255,150,90,${tint})`; g.fillRect(0, 0, W, H); }
 }
@@ -223,7 +226,7 @@ function ui() {
   const sl = $('slider'); if (document.activeElement !== sl || !sl.matches(':active')) sl.value = S.t; fill(sl);
   if (S.sel != null) cardState();
 }
-function setPlaying(p) { S.playing = p; const b = $('btnPlay'); b.textContent = p ? '⏸' : '▶'; b.setAttribute('aria-label', p ? '일시정지' : '재생'); }
+function setPlaying(p) { S.playing = p; const b = $('btnPlay'); b.innerHTML = `<svg class="ic"><use href="#i-${p ? 'pause' : 'play'}"/></svg>`; b.setAttribute('aria-label', p ? '일시정지' : '재생'); }
 function toast(msg) { const t = $('toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => t.hidden = true, 2200); }
 
 function select(i) {
