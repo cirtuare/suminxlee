@@ -117,6 +117,7 @@ function resize() {
   if (S.sel != null && mob) { ins.t = 100; ins.b = Math.max(160, H - $('card').getBoundingClientRect().top + 12); } // keep the agent between the status pill and the card
   if (S.sel == null) { tgt.x = (study.x0 + study.x1) / 2; tgt.y = (study.y0 + study.y1) / 2; tgt.z = fitZ; if (cam.z === .7) { cam.x = tgt.x; cam.y = tgt.y; cam.z = tgt.z; } }
 }
+const maxZ = () => Math.max(1, fitZ * 1.25);   // max zoom = the 2000 px picture at its own size; deeper only gets soft
 const cx = () => ins.l + (W - ins.l - ins.r) / 2, cy = () => ins.t + (H - ins.t - ins.b) / 2;
 const w2s = (u, v) => [(u - cam.x) * cam.z + cx(), (v - cam.y) * cam.z + cy()];
 const s2w = (px, py) => [(px - cx()) / cam.z + cam.x, (py - cy()) / cam.z + cam.y];
@@ -230,7 +231,7 @@ function setPlaying(p) { S.playing = p; const b = $('btnPlay'); b.innerHTML = `<
 function toast(msg) { const t = $('toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => t.hidden = true, 2200); }
 
 function select(i) {
-  S.sel = i; document.body.classList.add('sel'); S.follow = true; lastPos = cur[i] || null; tgt.z = Math.min(fitZ * 2.7, 2.7);  // the picture is 2000 px wide, deeper zoom gets soft
+  S.sel = i; document.body.classList.add('sel'); S.follow = true; lastPos = cur[i] || null; tgt.z = Math.min(fitZ * 2.7, maxZ());
   $('hint').hidden = true;
   const a = agents[i]; $('card').hidden = false; $('cName').textContent = a.n;
   $('cInfo').textContent = `${D.depts[a.d].name} · ${a.y}학년`;
@@ -298,7 +299,7 @@ function bind() {
     
     if (ptr.size === 2) {
       const [a, b] = [...ptr.values()]; ptr.set(e.pointerId, [e.clientX, e.clientY]); const [a2, b2] = [...ptr.values()], d = Math.hypot(a2[0] - b2[0], a2[1] - b2[1]), d0 = Math.hypot(a[0] - b[0], a[1] - b[1]);
-      if (d0 > 0) { tgt.z = clamp(tgt.z * d / d0, fitZ * .6, 3.2); cam.z = tgt.z; } moved = 99; return;
+      if (d0 > 0) { tgt.z = clamp(tgt.z * d / d0, fitZ * .6, maxZ()); cam.z = tgt.z; } moved = 99; return;
     }
     const dx = e.clientX - p[0], dy = e.clientY - p[1]; ptr.set(e.pointerId, [e.clientX, e.clientY]); moved += Math.abs(dx) + Math.abs(dy);
     if (moved > 6) { S.follow = false; tgt.x -= dx / cam.z; tgt.y -= dy / cam.z; clampTarget(); cam.x = tgt.x; cam.y = tgt.y; }
@@ -307,7 +308,7 @@ function bind() {
   cv.addEventListener('pointerleave', () => { S.hover = S.hp = null; cv.classList.remove('hover'); });
   cv.addEventListener('pointercancel', e => ptr.delete(e.pointerId));
   cv.addEventListener('wheel', e => {
-    e.preventDefault(); const z = clamp(tgt.z * Math.exp(-e.deltaY * .0015), fitZ * .6, 3.2);
+    e.preventDefault(); const z = clamp(tgt.z * Math.exp(-e.deltaY * .0015), fitZ * .6, maxZ());
     if (S.follow) { tgt.z = z; return; }
     const [wx, wy] = s2w(e.clientX, e.clientY); tgt.z = z; cam.z = z; const [sx, sy] = w2s(wx, wy); tgt.x = cam.x += (sx - e.clientX) / cam.z; tgt.y = cam.y += (sy - e.clientY) / cam.z; clampTarget();
   }, { passive: false });
